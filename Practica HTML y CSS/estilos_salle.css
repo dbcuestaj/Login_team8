@@ -1,0 +1,58 @@
+.universidad{
+    display: flex;
+    
+}
+.introduccion{
+    text-align:center;
+    color:black;
+    
+    /*background:#50CB93;*/
+    padding: 0px;
+    margin: 0px;
+    
+    font-size: 200px;
+
+}
+.inicio{
+    font-family: "Time new Roman", Verdana, Arial, Helvetica, sans-serif;
+    text-align:center;
+    color:blue;
+    font-size:200px;   
+
+}
+.Ingresar{
+    font-size:100px;
+}
+.formulario{
+    font-size:100px;
+}
+#Usuario, #Contraseña{
+    font-size:100px; 
+}
+section,article{
+    display: block;
+    margin:0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    column-count: 2 !important;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 8cm;
+    background: aqua;
+}
+button{
+    background-color:blue;
+    color:white;
+}
+@media screen and (max-width: 480px){
+    #encabezado{
+        height: auto;
+    }
+    #contenido{
+        width: auto;
+    }
+    #barra_lateral{
+        display:none;
+    }
+}
