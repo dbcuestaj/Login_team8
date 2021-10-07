@@ -1,0 +1,80 @@
+* {
+    box-sizing                      : border-box;
+}
+
+/* Style the body */
+body {
+    font-family                     : Arial, Helvetica, sans-serif;
+    margin                          : 0;    
+}
+
+.containerheader {    
+    display                         : flex;    
+}
+
+.boxheader {
+    width                           : 300px;
+    height                          : auto;
+    padding                         : 5px;
+    background-color                : white;        
+}
+
+/* Style the top navigation bar */
+.navbar {
+    list-style                      : none;
+    display                         : flex;
+    background-color                : rgb(255, 204,0);
+}
+
+/* Style the navigation bar links */
+.navbar a {
+    color                           : black;
+    text-decoration                 : none;
+    padding                         : 14px 20px;
+    text-align                      : center;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+    background-color                : rgb(17, 84,139);
+    color                           : rgb(255, 204,0);
+}
+
+/* Container main*/
+.Containermain {  
+    display                         : flex;
+    background-color                : rgb(17, 84,139);
+}
+
+.divisiones {
+    float: left;
+    padding: 15px;     
+}
+
+/* Footer */
+  .footer {    
+    list-style                      : none;
+    display                         : flex;
+    background-color                : rgb(255, 204,0);  
+}
+
+.footer a {
+    color                           : black;
+    text-decoration                 : none;
+    padding                         : 7px 10px;
+    text-align                      : center;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the columns stack on top of each 
+other instead of next to each other */
+@media screen and (max-width: 700px) {
+    .Containermain, .navbar {   
+      flex-direction: column;
+    }  
+}
+
+
+
+
+
+
