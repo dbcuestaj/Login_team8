@@ -1,11 +1,18 @@
 table {
     border-collapse: collapse;
     border: solid rgb(17, 84,139);
+    
 }
 
 th, td {
-    padding: 5px 10px;
+    padding: 4px 10px;
     border: solid 1px rgb(17, 84,139);
+    text-align: center;
+}
+.notaFinal {
+    background-color: rgb(17, 84,139);
+    color: #fff;
+    border: solid 1px #fff;
 }
 
 button {
@@ -50,6 +57,7 @@ input {
     border-radius                   : 3px; 
     border                          : solid 2px rgb(17, 84,139);
 }
+
 
 
 /* Responsive layout - when the screen is less than 700px wide, make the columns stack on top of each 
