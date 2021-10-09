@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informacion personal</title>
+    <link rel='stylesheet' type='text/css' href='css/estilo3.css' />
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="containerheader">
+        <div class="boxheader">
+            <img src="img/LA_SALLE_AN.gif" alt="ULogo" style="width:90%; height:auto;" />
+        </div>
+        <div class="boxheader"></div>
+        <div class="boxheader"></div>
+        <div class="boxheader"></div>
+        <div class="boxheader">
+            <div style="width: auto;">
+                <img src="img/user2.ico" alt="User" style="width:25%;height:auto; float: right;" />
+            </div>
+            <div style="width: auto; text-align: center; padding-left: 80px;">
+                <a href="#">
+                    <h4><b>Perfil</b></h4>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <h1>Informacion personal</h1>
+    </div>
+
+    <!-- The flexible grid -->
+    <div class="Containermain">
+        <div class="divisiones"></div>
+        <div class="divisiones">
+
+
+
+            <fieldset>
+                <legend style="font-weight:bold; color:#d4d4d4;">Datos personales</legend>
+                <form action="ejemplo.php" method="get">
+                    <p>Nombres: </p>
+                    <p> <input type="text" name="nombre" required readonly size="40" value="Juan Luis"></p>
+                    <p>Apellidos: </p>
+                    <p> <input type="text" name="nombre" required readonly size="40" value="Duarte Alcantara"></p>
+                    <p>Documento de identidad:</p>
+                    <p><input type="number" name="Documento" required size="40" readonly value="1013100890">
+                        <input type="text" name="tipoDeTarjeta" required readonly size="40" value="Tarjeta de identidad">
+                    </p>
+
+                    <p>Fecha de nacimiento: </p>
+                    <p><input type="date" name="fecha de nacimiento" readonly value="2004-07-27"></p>
+
+                    <p>Telefono:</p>
+                    <p><input type="number" name="telefono" required size="40" readonly value="3209793039"></p>
+
+                    <p>
+                        <input type="button" onclick="location.href='C:/Users/nicol/OneDrive/Desktop/Login_team8-main/FormularioCambio.html'" value="Editar Datos">
+
+                        <script>
+                            function mensaje(texto) {
+                                alert(texto);
+                            }
+                        </script>
+                    </p>
+
+            </fieldset>
+
+            </form>
+
+            <div class="imagenUsuario"><img src="img/logouser.png" alt="imagenUsuario"></div>
+
+
+
+        </div>
+        <div class="divisiones"></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <a href="#">© copyright Team8</a>
+    </div>
+</body>
+
+</html>
