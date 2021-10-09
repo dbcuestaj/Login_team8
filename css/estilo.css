@@ -43,7 +43,6 @@ body {
 /* Container main*/
 .Containermain {  
     display                         : flex;
-    background-color                : rgb(17, 84,139);
 }
 
 .divisiones {
@@ -52,7 +51,7 @@ body {
 }
 
 /* Footer */
-  .footer {    
+.footer {    
     list-style                      : none;
     display                         : flex;
     background-color                : rgb(255, 204,0);  
