@@ -9,6 +9,11 @@ th, td {
     border: solid 1px rgb(17, 84,139);
     text-align: center;
 }
+
+.ctadmin table tbody tr:nth-child(even){
+    background-color: lightgray;
+}
+
 .notaFinal {
     background-color: rgb(17, 84,139);
     color: #fff;
@@ -19,6 +24,11 @@ button {
     background-color: rgb(17, 84,139); 
     color: rgb(255, 204,0); 
     border-radius: 5px;
+}
+
+button:hover{
+    background-color: rgb(255, 204,0);
+    color: rgb(17, 84,139);
 }
 
 .aside {

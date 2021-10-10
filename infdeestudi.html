@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Información de Estudiantes</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel='stylesheet' type='text/css' href='css/estilo.css' />
+        <link rel='stylesheet' type='text/css' href='css/estiloadmin.css' />
+        <link rel='stylesheet' type='text/css' href='css/estiloinfdeest.css' />
+    </head>
+    <body>
+        <!-- Header -->
+        <div class="containerheader">            
+            <div class="boxheader">
+                <img src="img/logo-Usalle.png" alt="ULogo" style="width:90%; height:auto;"/>
+            </div>
+            <div class="boxheader"></div>
+            <div class="boxheader"></div>
+            <div class="boxheader"></div>                             
+            <div class="boxheader">
+                <div style="width: auto;">
+                    <img src="img/user2.ico" alt="User" style="width:25%;height:auto; float: right;"/>
+                </div>
+                <div style="width: auto; text-align: center; padding-left: 80px;">
+                    <a href="#"><h4><b>Perfil</b></h4></a>
+                </div>               
+            </div>           
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="navbar">
+            <a href="#"><b>Materias</b></a>
+            <a href="#"><b>Notas</b></a>
+            <a href="#"><b>Actividades</b></a>            
+        </div>  
+
+        <!-- The flexible grid -->
+        <div class="Containermain" style="width: 100%; background-color: white;">
+            <div class="aside">
+                <button><b>Calendario</b></button>
+                <button><b>Mensajes</b></button>
+                <button><b>Herramientas</b></button>
+                <button><b>Cerrar sesión</b></button>
+            </div>
+            
+            <div class="right">                                
+                <div style="display: flex; flex-direction: row; padding: 5px;">
+                    <div style="padding-top: 10px;">
+                        <img src="img/fotoest.jpg" alt="fotoestu" />
+                    </div>
+                    <div style="padding-left: 10px;">
+                        <p>Edwin Orlando Ñungo</p>
+                        <p><b>Semestre:</b> Misión TIC</p>
+                        <p><b>Facultad:</b> Ingeniería</p>
+                    </div>
+                </div>
+                
+                <div class="marco">
+                    <h2>Materias</h2> 
+                    <div class=container-table1 style="padding-right: 12px; padding-bottom: 12px; padding-left: 12px;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CODIGO</th>
+                                    <th>NOMBRE</th>
+                                    <th>PROFESOR</th>
+                                    <th>EMAIL</th>
+                                    <th>NOTA FINAL</th>
+                                    <th>ESTADO</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-titulo="Código">6931</td>
+                                    <td data-titulo="Nombre">Bases de Datos</td>
+                                    <td data-titulo="PROFESOR">Angelica Barreto</td>
+                                    <td data-titulo="Email">abarreto@uninorte.edu.co</td>
+                                    <td data-titulo="Nota">3</td>
+                                    <td data-titulo="Estado">Activa</td>
+                                    <td>
+                                        <button>Inscribir</button>
+                                        <button>Suspender</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-titulo="Código">7992</td>
+                                    <td data-titulo="Nombre">Gestión de Información</td>
+                                    <td data-titulo="PROFESOR">Nestor Torres</td>
+                                    <td data-titulo="Email">enungo@uninorte.edu.co</td>
+                                    <td data-titulo="Nota">4</td>
+                                    <td data-titulo="Estado">Activa</td>
+                                    <td>
+                                        <button>Inscribir</button>
+                                        <button>Suspender</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-titulo="Código">6169</td>
+                                    <td data-titulo="Nombre">Comunicación Oral y Escrita</td>
+                                    <td data-titulo="PROFESOR">Diego Bladimir</td>
+                                    <td data-titulo="Email">dbladimir@uninorte.edu.co</td>
+                                    <td data-titulo="Nota">5</td>
+                                    <td data-titulo="Estado">Activa</td>
+                                    <td>
+                                        <button>Inscribir</button>
+                                        <button>Suspender</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-titulo="Código">5148</td>
+                                    <td data-titulo="Nombre">Álgebra</td>
+                                    <td data-titulo="PROFESOR">John Duran</td>
+                                    <td data-titulo="Email">jduran@uninorte.edu.co</td>
+                                    <td data-titulo="Nota">2</td>
+                                    <td data-titulo="Estado">Finalizada</td>
+                                    <td>
+                                        <button>Inscribir</button>
+                                        <button>Suspender</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-titulo="Código">7860</td>
+                                    <td data-titulo="Nombre">Desarrollo Web Básico</td>
+                                    <td data-titulo="PROFESOR">Nicolas Tuesta</td>
+                                    <td data-titulo="Email">ntuesta@uninorte.edu.co</td>
+                                    <td data-titulo="Nota">5</td>
+                                    <td data-titulo="Estado">Finalizada</td>
+                                    <td>
+                                        <button>Inscribir</button>
+                                        <button>Suspender</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> 
+                
+                <div class="marco" style="margin-top: 10px;">
+                    <h2>Actividades</h2> 
+                    <div class="datatable-container">
+                        <div class="header-tools">
+                            <div class="tools">
+                                <ul>
+                                    <li><span><input type="checkbox"></span></li>
+                                    <li>
+                                        <button>
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button>
+                                            <i class="material-icons">delete</i>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button>
+                                            <i class="material-icons">share</i>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="search">
+                                <input type="text" name="" id="" class="search-input">
+                            </div>
+                        </div>
+                        <div style="padding-left: 12px; padding-right: 12px;">
+                            <table class="datatable">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>ESTADO</th>
+                                        <th>ID</th>
+                                        <th>NOMBRE</th>
+                                        <th>MATERIA</th>
+                                        <th>NOTA</th>
+                                        <th>FECHA ENTREGA</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="table-check-box"><input type="checkbox" name="" id=""></td>
+                                        <td><span class="Finalizada"></span></td>
+                                        <td>6931-1</td>
+                                        <td>Reto1</td>
+                                        <td>Bases de Datos</td>
+                                        <td>4</td>
+                                        <td>8/10/2021</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-check-box"><input type="checkbox" name="" id=""></td>
+                                        <td><span class="Activa"></span></td>
+                                        <td>7992-1</td>
+                                        <td>Reto1</td>
+                                        <td>Gestión de Información</td>
+                                        <td></td>
+                                        <td>8/10/2021</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-check-box"><input type="checkbox" name="" id=""></td>
+                                        <td><span class="Activa"></span></td>
+                                        <td>5148-2</td>
+                                        <td>Reto2</td>
+                                        <td>Álgebra</td>
+                                        <td></td>
+                                        <td>8/10/2021</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-check-box"><input type="checkbox" name="" id=""></td>
+                                        <td><span class="Finalizada"></span></td>
+                                        <td>7860-1</td>
+                                        <td>Reto1</td>
+                                        <td>Desarrollo Web Básico</td>
+                                        <td>5</td>
+                                        <td>8/10/2021</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-check-box"><input type="checkbox" name="" id=""></td>
+                                        <td><span class="Activa"></span></td>
+                                        <td>6931-2</td>
+                                        <td>Reto2</td>
+                                        <td>Bases de Datos</td>
+                                        <td></td>
+                                        <td>8/10/2021</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-check-box"><input type="checkbox" name="" id=""></td>
+                                        <td><span class="Activa"></span></td>
+                                        <td>7860-2</td>
+                                        <td>Reto2</td>
+                                        <td>Desarrollo Web Básico</td>
+                                        <td></td>
+                                        <td>8/10/2021</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="footer-tools">
+                            <div class="list-items">
+                                Mostrar
+                                <select name="n-entries" id="n-entries" class="n-entries">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select> 
+                                registros 
+                            </div>
+                            <div class="pages">
+                                <ul>
+                                    <li><span class="active">1</span></li>
+                                    <li><button>2</button></li>
+                                    <li><button>3</button></li>
+                                    <li><button>4</button></li>
+                                    <li><span>...</span></li>
+                                    <li><button>9</button></li>
+                                    <li><button>10</button></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                
+                </div>
+                    
+            </div>                
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+            <a href="#">© copyright Team8</a>            
+        </div>
+    </body>
+</html>
