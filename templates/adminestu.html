@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin de Estudiantes</title>
+        <link rel='stylesheet' type='text/css' href='css/estilo.css' />
+        <link rel='stylesheet' type='text/css' href='css/estiloadmin.css' />
+    </head>
+    <body>
+        <!-- Header -->
+        <div class="containerheader">            
+            <div class="boxheader">
+                <img src="img/logo-Usalle.png" alt="ULogo" style="width:90%; height:auto;"/>
+            </div>
+            <div class="boxheader"></div>
+            <div class="boxheader"></div>
+            <div class="boxheader"></div>                             
+            <div class="boxheader">
+                <div style="width: auto;">
+                    <img src="img/user2.ico" alt="User" style="width:25%;height:auto; float: right;"/>
+                </div>
+                <div style="width: auto; text-align: center; padding-left: 80px;">
+                    <a href="#"><h4><b>Perfil</b></h4></a>
+                </div>               
+            </div>           
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="navbar">
+            <a href="#"><b>Materias</b></a>
+            <a href="#"><b>Notas</b></a>
+            <a href="#"><b>Actividades</b></a>            
+        </div>  
+
+        <!-- The flexible grid -->
+        <div class="Containermain" style="width: 100%; background-color: white;">
+            <div class="aside">
+                <button><b>Calendario</b></button>
+                <button><b>Mensajes</b></button>
+                <button><b>Herramientas</b></button>
+                <button><b>Cerrar sesión</b></button>
+            </div>
+            
+            <div class="right">
+                <h2 style= "color: rgb(17, 84,139)";>Listado de Usuarios</h2> 
+                <button style="width: 100px; height: 30px;"><b>Nuevo</b></button>
+                <br>
+                <br>
+                <div class= prueba style="padding-right: 10px; padding-bottom: 5px;">
+                    <label>Mostrar</label>
+                    <input type="number" style="width: 80px;"/>
+                    <label>registros</label>
+                    <button style="float: right; margin-left: 5px;"><b>Buscar</b></button>                    
+                    <input type="text" style="float: right; width: 250px;"/> 
+                </div>
+                <div style="padding-right: 10px; padding-bottom: 5px;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>NOMBRE</th>
+                                <th>APELLIDO</th>
+                                <th>EMAIL</th>
+                                <th>FECHA CREACION</th>
+                                <th>NIVEL</th>
+                                <th>ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-titulo="Nombre">Angelica</td>
+                                <td data-titulo="Apellido">Barreto</td>
+                                <td data-titulo="Email">abarreto@uninorte.edu.co</td>
+                                <td data-titulo="Fecha de Alta">08/10/2021</td>
+                                <td data-titulo="Nivel">Pig</td>
+                                <td>
+                                    <button class="btneditar">Editar</button>
+                                    <button class="btneliminar">Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-titulo="Nombre">Edwin</td>
+                                <td data-titulo="Apellido">Pacheco</td>
+                                <td data-titulo="Email">enungo@uninorte.edu.co</td>
+                                <td data-titulo="Fecha de Alta">08/10/2021</td>
+                                <td data-titulo="Nivel">Pig</td>
+                                <td>
+                                    <button class="btneditar">Editar</button>
+                                    <button class="btneliminar">Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-titulo="Nombre">Diego</td>
+                                <td data-titulo="Apellido">Bladimir</td>
+                                <td data-titulo="Email">dbladimir@uninorte.edu.co</td>
+                                <td data-titulo="Fecha de Alta">08/10/2021</td>
+                                <td data-titulo="Nivel">Pig</td>
+                                <td>
+                                    <button class="btneditar">Editar</button>
+                                    <button class="btneliminar">Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-titulo="Nombre">John</td>
+                                <td data-titulo="Apellido">Duran</td>
+                                <td data-titulo="Email">jduran@uninorte.edu.co</td>
+                                <td data-titulo="Fecha de Alta">08/10/2021</td>
+                                <td data-titulo="Nivel">Chicken</td>
+                                <td>
+                                    <button class="btneditar">Editar</button>
+                                    <button class="btneliminar">Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-titulo="Nombre">Nicolas</td>
+                                <td data-titulo="Apellido">Tuesta</td>
+                                <td data-titulo="Email">ntuesta@uninorte.edu.co</td>
+                                <td data-titulo="Fecha de Alta">08/10/2021</td>
+                                <td data-titulo="Nivel">Chicken</td>
+                                <td>
+                                    <button class="btneditar">Editar</button>
+                                    <button class="btneliminar">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="padding-right: 10px; padding-bottom: 5px;">
+                    <label>Mostrando registros del...</label> 
+                    <div style="display: flex; float: right;">
+                        <button >Anterior</button>
+                        <button>1</button>
+                        <button>Siguiente</button>
+                    </div>                   
+                </div>
+            </div>                
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+            <a href="#">© copyright Team8</a>            
+        </div>
+    </body>
+</html>

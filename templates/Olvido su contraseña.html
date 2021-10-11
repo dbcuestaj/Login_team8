@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Format ¿OLVIDO SU CONTRASEÑA?</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/margeRecP2.css')}}">
+
+</head>
+
+<body>
+
+    <div class="videos">
+        <video src="{{url_for('static', filename='img/pexels-yan-krukov-8197045.mp4')}}" autoplay="true" loop></video>
+
+    </div>
+
+    <div class="login_box">
+        <img class="avatar" src="{{url_for('static', filename='img/logo2.png')}}" alt="logo unisalle">
+
+        <h1>¿Olvidaste tu contraseña?</h1>
+
+        <a href="#">Ingresa tu correo de recuperación para poder reestablecerla</a>
+
+
+        <form action="" method="get" name="login">
+
+            <label for=e-mail>Correo de recuperación</label>
+            <br>
+            <input type="email" placeholder="correo" name="name" id="name">
+
+
+            <input type="submit" value="Enviar">
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

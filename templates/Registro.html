@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Format login</title>
+    <link rel="stylesheet" href="{{url_for( filename='css/margeRecP.css')}}">
+
+</head>
+
+<body>
+    <div class="videos">
+
+        <video src="{{url_for('static', filename='img/pexels-yan-krukov-8197045.mp4')}}" autoplay="true" loop></video>
+    </div>
+    <div class="login_box">
+        <img class="avatar" src="{{url_for('static', filename='img/logo2.png')}}" alt="logo unisalle">
+
+        <h1>RECUPERACIÓN DE CONTRASEÑA</h1>
+        <form action="/registro" method="POST" name="login">
+            <label for=New_password>Nueva contraseña</label>
+            <input type="password" placeholder="new_password" name="name" id="name">
+
+            <p>La nueva contraseña debe tener minimo 8 caracteres entre numeros, letras y un caracter especial</p>
+
+            <label for=Repeat_Password>Repetir Nueva Contraseña</label>
+            <input type="password" placeholder="Repeat_Password" name="Pw" id="Pw">
+
+            <input type="submit" value="Enviar">
+
+        </form>
+
+    </div>
+
+</body>
+<script src="js/script.js"></script>
+
+</html>

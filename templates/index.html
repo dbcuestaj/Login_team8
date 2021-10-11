@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Format login</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/marge.css')}}">
+
+</head>
+
+<body>
+    <div class="videos">
+        <video src="{{url_for('static', filename='img/pexels-yan-krukov-8197045.mp4')}}" autoplay="true" loop></video>
+    </div>
+
+    <div class="login_box">
+        <img class="avatar" src="{{url_for('static', filename='img/logo2.png')}}" alt="logo unisalle">
+        <h1>Login Here</h1>
+        <form action="/paginicio" method="GET" name="login" onsubmit="login_1()">
+            <label for=username>Username</label>
+            <input type="text" placeholder="Username" name="name" id="name" minlength="1" required autofocus>
+
+            <label for=Password>Password</label>
+            <input type="password" placeholder="Password" name="Pw" id="Pw" minlength="8" required autofocus>
+
+            <input type="submit" value="Log In">
+
+            <a href="/recuperar contrasena">Lost your password</a><br>
+            <a href="/crearUsuario">Don´t have account</a>
+
+        </form>
+
+    </div>
+
+</body>
+<script src="js/script.js"></script>
+
+</html>
