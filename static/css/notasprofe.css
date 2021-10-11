@@ -1,0 +1,230 @@
+table {
+    border-collapse: collapse;
+    border: solid rgb(17, 84,139);
+}
+
+th, td {
+    padding: 5px 10px;
+    border: solid 1px rgb(17, 84,139);
+}
+
+button {
+    background-color: rgb(17, 84,139); 
+    color: rgb(255, 204,0); 
+    border-radius: 5px;
+}
+
+.aside {
+    padding-top                     : 20px;
+    padding-left                    : 20px;
+    padding-right                   : 50px;
+    list-style                      : none;
+    display                         : flex;
+    flex-direction                  : column;
+    background-color                : white;
+    width: 20%;
+}
+
+.aside button {
+    width                           : 200px;
+    background-color                : rgb(17, 84,139);
+    color                           : rgb(255, 204,0);
+    text-decoration                 : none;
+    padding                         : 14px 20px;
+    text-align                      : center;
+    margin                          : 5px;
+    border-radius                   : 15px;
+}
+
+.aside button:hover {
+    background-color                : rgb(255, 204,0);
+    color                           : rgb(17, 84,139);
+}
+
+.right {
+    width: 80%;
+    padding: 5px 10px;
+}
+
+input {
+    border-radius                   : 3px; 
+    border                          : solid 2px rgb(17, 84,139);
+}
+.footer {
+    position                        :fixed;
+    left                            : 0px;  
+    list-style                      : none;
+    display                         : flex;
+    background-color                : rgb(255, 204,0);  
+    bottom                          : 0px;
+    width                           : 100%;
+}
+
+.footer a {
+    color                           : black;
+    text-decoration                 : none;
+    padding                         : 7px 10px;
+    text-align                      : center;
+}
+tbody{
+   align-items : center;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the columns stack on top of each 
+other instead of next to each other */
+@media screen and (max-width: 700px) {
+    .aside {
+        width: 100%;
+    }
+
+    .right {
+        width: 100%;
+    }
+
+    .prueba {
+        display: flex;
+    }
+
+    th, td {       
+        border: none;
+    }
+
+    table tr{
+        display: flex;
+        flex-direction: column;
+        border: 1px solid grey;
+        padding: 1em;
+        margin: 1em;
+    }
+
+    table td[data-titulo] {
+        display: flex;
+    }
+
+    table td[data-titulo]::before {
+        content: attr(data-titulo);
+        width: 90px;
+        color: silver;
+        font-weight: bold;
+    }
+
+    table thead{
+        display: none;
+    }
+    
+}
+table {
+    border-collapse: collapse;
+    border: solid rgb(17, 84,139);
+}
+
+th, td {
+    padding: 5px 10px;
+    border: solid 1px rgb(17, 84,139);
+}
+
+button {
+    background-color: rgb(17, 84,139); 
+    color: rgb(255, 204,0); 
+    border-radius: 5px;
+}
+
+.aside {
+    padding-top                     : 20px;
+    padding-left                    : 20px;
+    padding-right                   : 50px;
+    list-style                      : none;
+    display                         : flex;
+    flex-direction                  : column;
+    background-color                : white;
+    width: 20%;
+}
+
+.aside button {
+    width                           : 200px;
+    background-color                : rgb(17, 84,139);
+    color                           : rgb(255, 204,0);
+    text-decoration                 : none;
+    padding                         : 14px 20px;
+    text-align                      : center;
+    margin                          : 5px;
+    border-radius                   : 15px;
+}
+
+.aside button:hover {
+    background-color                : rgb(255, 204,0);
+    color                           : rgb(17, 84,139);
+}
+
+.right {
+    width: 80%;
+    padding: 5px 10px;
+}
+
+input {
+    border-radius                   : 3px; 
+    border                          : solid 2px rgb(17, 84,139);
+}
+.footer {
+    position                        :fixed;
+    left                            : 0px;  
+    list-style                      : none;
+    display                         : flex;
+    background-color                : rgb(255, 204,0);  
+    bottom                          : 0px;
+    width                           : 100%;
+}
+
+.footer a {
+    color                           : black;
+    text-decoration                 : none;
+    padding                         : 7px 10px;
+    text-align                      : center;
+}
+tbody{
+   align-items : center;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the columns stack on top of each 
+other instead of next to each other */
+@media screen and (max-width: 700px) {
+    .aside {
+        width: 100%;
+    }
+
+    .right {
+        width: 100%;
+    }
+
+    .prueba {
+        display: flex;
+    }
+
+    th, td {       
+        border: none;
+    }
+
+    table tr{
+        display: flex;
+        flex-direction: column;
+        border: 1px solid grey;
+        padding: 1em;
+        margin: 1em;
+    }
+
+    table td[data-titulo] {
+        display: flex;
+    }
+
+    table td[data-titulo]::before {
+        content: attr(data-titulo);
+        width: 90px;
+        color: silver;
+        font-weight: bold;
+    }
+
+    table thead{
+        display: none;
+    }
+    
+}
