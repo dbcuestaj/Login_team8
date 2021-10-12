@@ -5,9 +5,17 @@ app = Flask(__name__)
 def login():
     return render_template ('index.html')
 
-@app.route('/paginicio')
+@app.route('/paginicio',methods=["POST"])   
 def paginicio():
-    return render_template ('paginicio.html')
+    nombre="estudiante"
+    if ((request.form["name"]=="estudiante" and request.form["Pw"]=="estudiante1") or 
+    (request.form["name"]=="profesor" and request.form["Pw"]=="profesor1")
+     or(request.form["name"]=="superadmin" and request.form["Pw"]=="superadmin1")):
+
+        return render_template ('paginicio.html')
+    else:
+        print("usuario no valido")
+        return render_template ('index.html')
 
 @app.route('/registro',methods=['POST'])
 def registro():

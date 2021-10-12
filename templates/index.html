@@ -18,7 +18,7 @@
     <div class="login_box">
         <img class="avatar" src="{{url_for('static', filename='img/logo2.png')}}" alt="logo unisalle">
         <h1>Login Here</h1>
-        <form action="/paginicio" method="GET" name="login" onsubmit="login_1()">
+        <form action="/paginicio" method="POST" name="login">
             <label for=username>Username</label>
             <input type="text" placeholder="Username" name="name" id="name" minlength="1" required autofocus>
 
