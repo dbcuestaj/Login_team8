@@ -6,22 +6,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Información de Estudiantes</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel='stylesheet' type='text/css' href='css/estilo.css' />
-        <link rel='stylesheet' type='text/css' href='css/estiloadmin.css' />
-        <link rel='stylesheet' type='text/css' href='css/estiloinfdeest.css' />
+        <link rel='stylesheet' type='text/css' href="{{url_for('static', filename='css/estilo.css')}}"/>
+        <link rel='stylesheet' type='text/css' href="{{url_for('static', filename='css/estiloadmin.css'
+        )}}" />
+        <link rel='stylesheet' type='text/css' href="{{url_for('static', filename='css/estiloinfdeest.css' )}}" />
     </head>
     <body>
         <!-- Header -->
         <div class="containerheader">            
             <div class="boxheader">
-                <img src="img/logo-Usalle.png" alt="ULogo" style="width:90%; height:auto;"/>
+                <a href='paginicio.html'>
+                <img src="{{url_for('static', filename='img/LA_SALLE_AN.gif' )}}" alt="ULogo" style="width:90%; height:auto;"/>
+                </a>
             </div>
             <div class="boxheader"></div>
             <div class="boxheader"></div>
             <div class="boxheader"></div>                             
             <div class="boxheader">
                 <div style="width: auto;">
-                    <img src="img/user2.ico" alt="User" style="width:25%;height:auto; float: right;"/>
+                    <img src="{{url_for('static', filename='img/user2.ico' )}}"  alt="User" style="width:25%;height:auto; float: right;"/>
                 </div>
                 <div style="width: auto; text-align: center; padding-left: 80px;">
                     <a href="#"><h4><b>Perfil</b></h4></a>
@@ -32,7 +35,7 @@
         <!-- Navigation Bar -->
         <div class="navbar">
             <a href="#"><b>Materias</b></a>
-            <a href="#"><b>Notas</b></a>
+            <a href="/ResumenNotas"><b>Notas</b></a>
             <a href="#"><b>Actividades</b></a>            
         </div>  
 

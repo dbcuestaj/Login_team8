@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/login')
 def login():
     return render_template ('index.html')
 
@@ -39,4 +39,21 @@ def perfil():
 
 @app.route('/actividades')
 def actividades():
-    return render_template ('pantilla.html')
+    return render_template ('pantilla.html') #cambiar cuando Mock de actividades este on-line
+
+@app.route('/notasprof')
+def notasprof():
+    return render_template ('notasprofe.html')    
+
+@app.route('/adminestu')
+def adminestu():
+    return render_template ('adminestu.html')    
+
+@app.route('/formularioCambio')
+def formularioCambio():
+    return render_template ('formularioCambio.html')
+    
+@app.route('/infdeestudi')
+def infdeestudi():
+    return render_template ('infdeestudi.html')
+
