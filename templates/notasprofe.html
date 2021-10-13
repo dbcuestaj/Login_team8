@@ -5,24 +5,26 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin de Estudiantes</title>
-        <link rel='stylesheet' type='text/css' href='css/estilo.css' />
-        <link rel='stylesheet' type='text/css' href='css/estiloadmin.css' />
+        <link rel='stylesheet' type='text/css' href="{{url_for('static', filename='css/estilo.css')}}" />
+        <link rel='stylesheet' type='text/css' href="{{url_for('static', filename='css/estiloadmin.css')}}" />
     </head>
     <body>
         <!-- Header -->
         <div class="containerheader">            
             <div class="boxheader">
-                <img src="img/logo-Usalle.png" alt="ULogo" style="width:90%; height:auto;"/>
+                <a href="paginicio">
+                <img src="{{url_for('static', filename='img/LA_SALLE_AN.gif')}}" alt="ULogo" style="width:90%; height:auto;"/>
+                </a>
             </div>
             <div class="boxheader"></div>
             <div class="boxheader"></div>
             <div class="boxheader"></div>                             
             <div class="boxheader">
                 <div style="width: auto;">
-                    <img src="img/user2.ico" alt="User" style="width:25%;height:auto; float: right;"/>
+                    <img src="{{url_for('static', filename='img/user2.ico')}}" alt="User" style="width:25%;height:auto; float: right;"/>
                 </div>
                 <div style="width: auto; text-align: center; padding-left: 80px;">
-                    <a href="#"><h4><b>Perfil</b></h4></a>
+                    <a href="perfil"><h4><b>Perfil</b></h4></a>
                 </div>               
             </div>           
         </div>
@@ -40,13 +42,13 @@
                 <button><b>Calendario</b></button>
                 <button><b>Mensajes</b></button>
                 <button><b>Herramientas</b></button>
+                <a href="login">
                 <button><b>Cerrar sesión</b></button>
+                </a>
             </div>
             
             <div class="right">
                 <h2 style= "color: rgb(17, 84,139)";>Listado de Estudiantes</h2> 
-                <button style="width: 100px; height: 30px;"><b>Nuevo</b></button>
-                <br>
                 <br>
                 <div class= prueba style="padding-right: 10px; padding-bottom: 5px;">
                     <label>Mostrar</label>
