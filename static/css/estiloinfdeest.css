@@ -179,3 +179,42 @@ h2 {
 .datatable-container .datatable tbody tr .Finalizada::before {
     background-color: gray;
 } 
+
+.datatable-container .datatable tbody tr .Entregada::after {
+    content: 'Entregada';
+    color: grey;
+}
+
+.datatable-container .datatable tbody tr .NoEntregada::after {
+    content: 'No Entregada';
+    color: red;
+}
+
+.datatable-container .datatable tbody tr .EnDesarrollo::after {
+    content: 'En Desarrollo';
+    color: orange;
+}
+
+.datatable-container .datatable tbody tr .Entregada::before,
+.datatable-container .datatable tbody tr .NoEntregada::before,
+.datatable-container .datatable tbody tr .EnDesarrollo::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.datatable-container .datatable tbody tr .Entregada::before {
+    background-color: grey;
+}
+
+.datatable-container .datatable tbody tr .NoEntregada::before {
+    background-color: red;
+} 
+
+.datatable-container .datatable tbody tr .EnDesarrollo::before {
+    background-color: orange;
+} 
