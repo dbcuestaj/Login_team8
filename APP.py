@@ -57,3 +57,6 @@ def formularioCambio():
 def infdeestudi():
     return render_template ('infdeestudi.html')
 
+if __name__=='__main__':
+    app.run(debug=True, port=80)
+
