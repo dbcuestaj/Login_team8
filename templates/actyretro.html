@@ -7,24 +7,26 @@
         <title>Actividades</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel='stylesheet' type='text/css' href='estilo.css' />
-        <link rel='stylesheet' type='text/css' href='estiloadmin.css' />
-        <link rel='stylesheet' type='text/css' href='estiloinfdeest.css' />
-        <link rel='stylesheet' type='text/css' href='estiloactyretro.css' />
-        
+        <link rel='stylesheet' type='text/css' href="{{url_for('static', filename='css/estilo.css')}}">        
+        <link rel='stylesheet' type='text/css' href="{{url_for('static', filename='css/estiloadmin.css'
+        )}}">
+        <link rel='stylesheet' type='text/css' href="{{url_for('static', filename='css/estiloinfdeest.css' )}}">
+        <link rel='stylesheet' type='text/css' href="{{url_for('static', filename='css/estiloactyretro.css'
+        )}}">
     </head>
+
     <body>
         <!-- Header -->
         <div class="containerheader">            
             <div class="boxheader">
-                <img src="logo-Usalle.png" alt="ULogo" style="width:90%; height:auto;"/>
+                <img src="{{url_for('static', filename='img/LA_SALLE_AN.gif' )}}" alt="ULogo" style="width:90%; height:auto;"/>
             </div>
             <div class="boxheader"></div>
             <div class="boxheader"></div>
             <div class="boxheader"></div>                             
             <div class="boxheader">
                 <div style="width: auto;">
-                    <img src="user2.ico" alt="User" style="width:25%;height:auto; float: right;"/>
+                    <img src="{{url_for('static', filename='img/user2.ico' )}}" alt="User" style="width:25%;height:auto; float: right;"/>
                 </div>
                 <div style="width: auto; text-align: center; padding-left: 80px;">
                     <a href="#"><h4><b>Perfil</b></h4></a>

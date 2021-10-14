@@ -39,7 +39,7 @@ def perfil():
 
 @app.route('/actividades')
 def actividades():
-    return render_template ('pantilla.html') #cambiar cuando Mock de actividades este on-line
+    return render_template ('actyretro.html') #cambiar cuando Mock de actividades este on-line
 
 @app.route('/notasprof')
 def notasprof():
