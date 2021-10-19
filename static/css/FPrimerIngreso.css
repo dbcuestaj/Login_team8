@@ -1,0 +1,85 @@
+body{
+  margin: 0;
+  font-family: sans-serif;
+  overflow-x: hidden;
+  height: 100vh;    
+  display: flex;
+  align-items: center;      
+}
+
+.videos {    
+  position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+.videos video {
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+.registro_box {
+    z-index: 1;
+    width: 400px;
+    height: auto;
+    border-radius:10px;
+    margin-left: 60%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 25px;    
+    background: rgba(7, 7, 7, 0.808);
+    color: white;      
+}
+
+.registro_box .avatar{
+    width: 100px; 
+    height: 100px;
+    border-radius: 50%;
+    margin-top:-50px;
+    margin-left: 150px;    
+}
+
+.registro_box h1{
+  margin:0;
+  padding:0 0 20px 0;
+  text-align:center;
+  font-size:22px;
+}
+
+.row{
+  width: 100%;
+  height: 22px;
+  margin-bottom: 10px;
+}
+
+.row2{
+  width: 60%;
+  height: 22px;
+  margin-bottom: 10px;
+}
+
+.registro_box input[type="submit"],
+.registro_box input[type="reset"],
+.registro_box input[type="button"] {
+  border:none;
+  font-size: 14px;
+  font-weight:bold;
+  outline: none;
+  height: 30px;
+  border-radius:20px;
+  margin-right: 15px;  
+}
+
+.registro_box input[type="submit"]:hover,
+.registro_box input[type="reset"]:hover,
+.registro_box input[type="button"]:hover {
+  background:rgb(90, 90, 236)
+}
+
+
+
+
+

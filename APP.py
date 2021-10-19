@@ -29,6 +29,7 @@ def recuperar_contrasena():
 @app.route('/crearUsuario')
 def crear_usuario():
     return render_template ('FormularioPrimerIngreso.html')
+
 @app.route('/ResumenNotas')
 def ResumenNotas():
     return render_template ('redumenNotas.html')
@@ -56,6 +57,9 @@ def formularioCambio():
 @app.route('/infdeestudi')
 def infdeestudi():
     return render_template ('infdeestudi.html')
+
+if __name__ == '__main__':
+    app.run(port=8080,debug=True)
 
 
 
