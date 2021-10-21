@@ -11,7 +11,7 @@ Trabajar con la base de datos.
 import sqlite3
 from sqlite3 import Error
 
-URL_DB = 'Notas.db'
+URL_DB = 'NotasVF.db'
 
 def seleccion(sql) -> list:
     """ Ejecuta una consulta de selección sobre la base de datos """
@@ -37,7 +37,7 @@ def accion(sql, datos) -> int:
 
 def base_conexion():
     try:
-        conectar=sqlite3.Connection('Notas.db')
+        conectar=sqlite3.Connection('NotasVF.db')
         return conectar
     except  Error:
         print(Error)
