@@ -16,17 +16,17 @@
     </div>
 
     <div class="registro_box">
-        <img class="avatar" src="{{url_for('static', filename='img/logo2.png')}}" alt="logo unisalle">        
+        <img class="avatar" src="{{url_for('static', filename='img/logo2.png')}}" alt="logo unisalle">
         <h1>Regístrate Estudiante</h1>
 
         <fieldset>
             <legend style="font-weight:bold; color:#d4d4d4;">Datos Requeridos</legend>
-            <form action="/login" method="POST" name="registro">
-                   
-                <input class=row type="text" name="nombre" required autofocus size="40" placeholder="Nombres"><br>
-                <input class=row type="text" name="nombre" required size="40" placeholder="Apellidos"><br>
-                <input class=row type="password" name="contrasena" required size="40" placeholder="Contraseña" minlength="8"><br>
-                <input class=row type="password" name="rcontrasena" required size="40" placeholder="Repetir contraseña" minlength="8"><br>
+            <form action="/registro" method="POST" name="registro">
+
+                <input class=row type="text" name="nombre" id="nombre" required autofocus size="40" placeholder="Nombres"><br>
+                <input class=row type="text" name="apellido" id="apellido" required size="40" placeholder="Apellidos"><br>
+                <input class=row type="password" name="contrasena" id="contraseña" required size="40" placeholder="Contraseña" minlength="8"><br>
+                <input class=row type="password" name="rcontrasena" id="contraseña2" required size="40" placeholder="Repetir contraseña" minlength="8"><br>
                 <label>Documento de identidad:</label><br>
                 <div style="margin-bottom: 10px;">
                     <select name="menu" style="height: 29px;">
@@ -37,12 +37,18 @@
                     </select>
                     <input type="text" name="Documento" required size="40" placeholder="Numero de identificación" style="width: 45%; height: 22px;">
                 </div>
+                <div style="margin-bottom: 10px;">
+                    <select name="selectrol" style="height: 29px; width: 38%;">
+                        <option value="0">Seleccione</option>
+                        <option value="1">Docente</option>
+                        <option value="2">Estudiante</option>
+                        
+                    </select>
+                </div>
                 <label>Genero:</label><br>
                 <div class="row" style="display: inline-block;">
-                    <input type="radio" id="mujer" name="genero" value="Mujer">
-                    <label for="html">Mujer</label>
-                    <input type="radio" id="hombre" name="genero" value="Hombre">
-                    <label for="html">Hombre</label>                    
+                    <input type="radio" id="mujer" name="genero" value="M">   <label for="html">Mujer</label>
+                    <input type="radio" id="hombre" name="genero" value="H">   <label for="html">Hombre</label>
                 </div>
                 <label style="margin-bottom: 10px;">Fecha de nacimiento: </label><br>
                 <input class="row2" type="date" name="fecha de nacimiento"><br>
@@ -53,9 +59,9 @@
                     <input type="reset" value="Borrar Todo">
                     <a href="/login"><input type="button" value="Cancelar"></a>
                 </div>
-            
+
             </form>
-        </fieldset>            
+        </fieldset>
 
     </div>
 

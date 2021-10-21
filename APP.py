@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, flash, redirect
 from markupsafe import escape
 import os
+import dB
 from dB import accion, seleccion
 
 app = Flask(__name__)
@@ -41,9 +42,57 @@ def paginicio():
     return render_template ('paginicio.html')
     
 
+#@app.route('/registro',methods=['POST'])
+#def registro():
+    #return render_template ('paginicio.html')
+
 @app.route('/registro',methods=['POST'])
-def registro():
-    return render_template ('paginicio.html')
+def registro_datos():
+    if (request.form['selectrol']=="2"):
+        print(request.form)
+        dNI=request.form['Documento']
+        print(dNI)
+        Nombres=request.form['nombre']
+        Apellidos=request.form['apellido']
+        Correo=request.form['Documento']
+        Genero=request.form['genero']
+        Estado=request.form['Documento']
+        Contraseña=request.form['rcontrasena']
+        Nacido=request.form['fecha de nacimiento']
+        Celular=request.form['celular']
+        print('here -2')
+        conexion=dB.base_conexion()
+        print('here-1')
+        strsql="insert into Estudiantes (DNI, Nombres, Apellidos,Correo, Genero,Estado,Contraseña,Nacido,Celular) values('{}','{}','{}','{}','{}', '{}','{}','{}','{}')" .format(dNI,Nombres,Apellidos,Correo,Genero,Estado, Contraseña,Nacido,Celular)
+        print('here')
+        cursosObj=conexion.cursor()
+        cursosObj.execute(strsql)
+        print('here2')
+        conexion.commit()
+        conexion.close()
+        print('here3')
+        
+    elif (request.form['selectrol']=="1"):
+        print(request.form)
+        Id=request.form['Documento']
+        Nombres=request.form['nombre']
+        Apellidos=request.form['apellido']
+        Correo=request.form['Documento']
+        Genero=request.form['genero']
+        Estado=request.form['Documento']
+        Contraseña=request.form['rcontrasena']
+        print('here -2')
+        conexion=dB.base_conexion()
+        print('here-1')
+        strsql="insert into Profesores (ID, Nombres, Apellidos,Correo, Genero,Estado,Contraseña) values('{}','{}','{}','{}','{}', '{}','{}')" .format(Id,Nombres,Apellidos,Correo,Genero,Estado, Contraseña)
+        print('here')
+        cursosObj=conexion.cursor()
+        cursosObj.execute(strsql)
+        print('here2')
+        conexion.commit()
+        conexion.close()
+        print('here3')
+    return render_template ('index.html')
 
 @app.route('/recuperar contrasena')
 def recuperar_contrasena():

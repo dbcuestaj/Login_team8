@@ -9,6 +9,7 @@ Trabajar con la base de datos.
 """
 
 import sqlite3
+from sqlite3 import Error
 URL_DB = 'Notas.db'
 
 def seleccion(sql) -> list:
@@ -32,3 +33,10 @@ def accion(sql, datos) -> int:
     except:
         res = 0
     return res
+
+def base_conexion():
+    try:
+        conectar=sqlite3.Connection('Notas.db')
+        return conectar
+    except  Error:
+        print(Error)
