@@ -1,25 +1,48 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, flash, redirect
+from markupsafe import escape
+import os
+from dB import accion, seleccion
+
 app = Flask(__name__)
+app.secret_key = os.urandom(24)
 
-@app.route('/login')
+@app.route('/')
+@app.route('/home/')
+@app.route('/index/')
+def inicio():
+    return render_template('index.html')
+
+@app.route('/index/', methods=["POST"])
 def login():
-    return render_template ('index.html')
-
-@app.route('/paginicio',methods=["POST"])   
-def paginicio():
-    nombre="estudiante"
-    if ((request.form["name"]=="estudiante" and request.form["Pw"]=="estudiante1") or 
-    (request.form["name"]=="profesor" and request.form["Pw"]=="profesor1")
-     or(request.form["name"]=="superadmin" and request.form["Pw"]=="superadmin1")):
-
-        return render_template ('paginicio.html')
+    # recuperar los datos del formulario
+    usr = escape(request.form["name"].strip()) # Dificultar la inyección de código y quitar espacios en blanco al comienzo o al final
+    cla = escape(request.form["Pw"].strip()) 
+    # Preparar la consulta
+    sql = f'SELECT Contraseña FROM Estudiantes WHERE correo="{usr}"'
+    # Ejecutar la consulta
+    res = seleccion(sql)
+    print(res)
+    # Proceso la respuesta
+    if len(res)==0:
+        flash('ERROR: Usuario no existe')
+        return render_template('index.html')
     else:
-        print("usuario no valido")
-        return render_template ('index.html')
+        # Recupero el valor de la clave
+        clave = res[0][0]
+        print(clave)
+        if clave == cla:
+            return redirect('/paginicio/')
+        else:
+            flash('ERROR: Clave invalida')
+            return render_template('index.html')
+
+@app.route('/paginicio/',methods=["GET", "POST"])   
+def paginicio():
+    return render_template ('paginicio.html')
+    
 
 @app.route('/registro',methods=['POST'])
 def registro():
-    print(request.form)
     return render_template ('paginicio.html')
 
 @app.route('/recuperar contrasena')
