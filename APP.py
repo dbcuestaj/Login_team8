@@ -19,7 +19,7 @@ def login():
     usr = escape(request.form["name"].strip()) # Dificultar la inyección de código y quitar espacios en blanco al comienzo o al final
     cla = escape(request.form["Pw"].strip()) 
     # Preparar la consulta
-    sql = f'SELECT Contraseña FROM Estudiantes WHERE correo="{usr}"'
+    sql = f'SELECT Contraseña FROM Estudiantes WHERE DNI="{usr}"'
     # Ejecutar la consulta
     res = seleccion(sql)
     print(res)
