@@ -17,11 +17,11 @@
 
     <div class="registro_box">
         <img class="avatar" src="{{url_for('static', filename='img/logo2.png')}}" alt="logo unisalle">
-        <h1>Regístrate Estudiante</h1>
+        <h1>Regístrate</h1>
 
         <fieldset>
             <legend style="font-weight:bold; color:#d4d4d4;">Datos Requeridos</legend>
-            <form action="/registro" method="POST" name="registro">
+            <form action="/registro/" method="POST" name="registro">
 
                 <input class=row type="text" name="nombre" id="nombre" required autofocus size="40" placeholder="Nombres"><br>
                 <input class=row type="text" name="apellido" id="apellido" required size="40" placeholder="Apellidos"><br>
@@ -37,12 +37,12 @@
                     </select>
                     <input type="text" name="Documento" required size="40" placeholder="Numero de identificación" style="width: 45%; height: 22px;">
                 </div>
+                <label>Perfil:</label><br>
                 <div style="margin-bottom: 10px;">
                     <select name="selectrol" style="height: 29px; width: 38%;">
                         <option value="0">Seleccione</option>
                         <option value="1">Docente</option>
-                        <option value="2">Estudiante</option>
-                        
+                        <option value="2">Estudiante</option>                        
                     </select>
                 </div>
                 <label>Genero:</label><br>
@@ -52,12 +52,13 @@
                 </div>
                 <label style="margin-bottom: 10px;">Fecha de nacimiento: </label><br>
                 <input class="row2" type="date" name="fecha de nacimiento"><br>
-                <input class="row2" type="text" name="celular" required size="40" placeholder="Celular"><br>
-
+                {% for msg in get_flashed_messages() %}
+                <div class="row">{{ msg }}</div>
+                {% endfor %}
                 <div class="row">
-                    <a href="/login"><input type="submit" value="Enviar"></a>
+                    <a href="/index/"><input type="submit" value="Enviar"></a>
                     <input type="reset" value="Borrar Todo">
-                    <a href="/login"><input type="button" value="Cancelar"></a>
+                    <a href="/index/"><input type="button" value="Cancelar"></a>
                 </div>
 
             </form>

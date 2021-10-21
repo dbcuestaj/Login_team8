@@ -18,18 +18,18 @@ def login():
     # recuperar los datos del formulario
     usr = escape(request.form["name"].strip()) # Dificultar la inyección de código y quitar espacios en blanco al comienzo o al final
     cla = escape(request.form["Pw"].strip()) 
+
     # Preparar la consulta
     sql = f'SELECT Contraseña FROM Estudiantes WHERE DNI="{usr}"'
     # Ejecutar la consulta
     res = seleccion(sql)
-    print(res)
     # Proceso la respuesta
     if len(res)==0:
         flash('ERROR: Usuario no existe')
         return render_template('index.html')
     else:
         # Recupero el valor de la clave
-        clave = res[0][0]
+        clave = str(res[0][0])
         print(clave)
         if clave == cla:
             return redirect('/paginicio/')
@@ -40,59 +40,45 @@ def login():
 @app.route('/paginicio/',methods=["GET", "POST"])   
 def paginicio():
     return render_template ('paginicio.html')
-    
 
-#@app.route('/registro',methods=['POST'])
-#def registro():
-    #return render_template ('paginicio.html')
-
-@app.route('/registro',methods=['POST'])
+@app.route('/registro/',methods=['GET','POST'])
 def registro_datos():
-    if (request.form['selectrol']=="2"):
-        print(request.form)
-        dNI=request.form['Documento']
-        print(dNI)
-        Nombres=request.form['nombre']
-        Apellidos=request.form['apellido']
-        Correo=request.form['Documento']
-        Genero=request.form['genero']
-        Estado=request.form['Documento']
-        Contraseña=request.form['rcontrasena']
-        Nacido=request.form['fecha de nacimiento']
-        Celular=request.form['celular']
-        print('here -2')
-        conexion=dB.base_conexion()
-        print('here-1')
-        strsql="insert into Estudiantes (DNI, Nombres, Apellidos,Correo, Genero,Estado,Contraseña,Nacido,Celular) values('{}','{}','{}','{}','{}', '{}','{}','{}','{}')" .format(dNI,Nombres,Apellidos,Correo,Genero,Estado, Contraseña,Nacido,Celular)
-        print('here')
-        cursosObj=conexion.cursor()
-        cursosObj.execute(strsql)
-        print('here2')
-        conexion.commit()
-        conexion.close()
-        print('here3')
-        
-    elif (request.form['selectrol']=="1"):
-        print(request.form)
-        Id=request.form['Documento']
-        Nombres=request.form['nombre']
-        Apellidos=request.form['apellido']
-        Correo=request.form['Documento']
-        Genero=request.form['genero']
-        Estado=request.form['Documento']
-        Contraseña=request.form['rcontrasena']
-        print('here -2')
-        conexion=dB.base_conexion()
-        print('here-1')
-        strsql="insert into Profesores (ID, Nombres, Apellidos,Correo, Genero,Estado,Contraseña) values('{}','{}','{}','{}','{}', '{}','{}')" .format(Id,Nombres,Apellidos,Correo,Genero,Estado, Contraseña)
-        print('here')
-        cursosObj=conexion.cursor()
-        cursosObj.execute(strsql)
-        print('here2')
-        conexion.commit()
-        conexion.close()
-        print('here3')
-    return render_template ('index.html')
+    if request.method == 'GET':
+        return render_template('FormularioPrimerIngreso.html')
+    else:
+        if (request.form['selectrol']=="2"):
+            dNI=request.form['Documento']
+            Nom=request.form['nombre']
+            Ape=request.form['apellido']
+            Nombres= Nom + " " + Ape
+            Genero=request.form['genero']
+            Contraseña=request.form['contrasena']
+            Nacido=request.form['fecha de nacimiento']
+            
+            conexion=dB.base_conexion()
+            strsql="insert into Estudiantes (DNI, Nombres, Genero,Contraseña,Nacido) values('{}','{}','{}','{}', '{}')" .format(dNI,Nombres,Genero,Contraseña,Nacido)
+            cursosObj=conexion.cursor()
+            cursosObj.execute(strsql)
+            conexion.commit()
+            conexion.close()
+                        
+        elif (request.form['selectrol']=="1"):
+            Id=request.form['Documento']
+            Nom=request.form['nombre']
+            Ape=request.form['apellido']
+            Nombres= Nom + " " + Ape
+            Genero=request.form['genero']
+            Estado=request.form['Documento']
+            Contraseña=request.form['contrasena']
+
+            conexion=dB.base_conexion()
+            strsql="insert into Profesores (ID, Nombres, Genero,Contraseña) values('{}','{}','{}','{}')" .format(Id,Nombres,Genero,Contraseña)
+            cursosObj=conexion.cursor()
+            cursosObj.execute(strsql)            
+            conexion.commit()
+            conexion.close()
+            
+        return render_template ('index.html')
 
 @app.route('/recuperar contrasena')
 def recuperar_contrasena():

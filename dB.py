@@ -10,6 +10,7 @@ Trabajar con la base de datos.
 
 import sqlite3
 from sqlite3 import Error
+
 URL_DB = 'Notas.db'
 
 def seleccion(sql) -> list:
