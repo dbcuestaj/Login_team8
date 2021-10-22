@@ -52,7 +52,7 @@ body {
 
 /* Footer */
 .footer {
-    position                        :fixed;
+    
     left                            : 0px;  
     list-style                      : none;
     display                         : flex;

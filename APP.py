@@ -18,9 +18,13 @@ def login():
     # recuperar los datos del formulario
     usr = escape(request.form["name"].strip()) # Dificultar la inyección de código y quitar espacios en blanco al comienzo o al final
     cla = escape(request.form["Pw"].strip()) 
-
+    
     # Preparar la consulta
-    sql = f'SELECT Contraseña FROM Estudiantes WHERE DNI="{usr}"'
+    if (request.form['selectrol']=="2"):
+        sql = f'SELECT Contraseña FROM Estudiantes WHERE DNI="{usr}"'
+    elif (request.form['selectrol']=="1"):
+        sql = f'SELECT Contraseña FROM Profesores WHERE ID="{usr}"'    
+
     # Ejecutar la consulta
     res = seleccion(sql)
     # Proceso la respuesta
@@ -70,6 +74,10 @@ def registro_datos():
             Genero=request.form['genero']
             Estado=request.form['Documento']
             Contraseña=request.form['contrasena']
+            prueba = request.form['selectrol']
+            print(prueba)
+            if prueba == "1":
+                print(True)
 
             conexion=dB.base_conexion()
             strsql="insert into Profesores (ID, Nombres, Genero,Contraseña) values('{}','{}','{}','{}')" .format(Id,Nombres,Genero,Contraseña)
@@ -80,13 +88,13 @@ def registro_datos():
             
         return render_template ('index.html')
 
+@app.route('/plantilla/')
+def plantilla():
+    return render_template ('plantilla.html')
+
 @app.route('/recuperar contrasena')
 def recuperar_contrasena():
     return render_template ('Olvido su contraseña.html')
-
-@app.route('/crearUsuario')
-def crear_usuario():
-    return render_template ('FormularioPrimerIngreso.html')
 
 @app.route('/ResumenNotas')
 def ResumenNotas():
@@ -98,7 +106,7 @@ def perfil():
 
 @app.route('/actividades')
 def actividades():
-    return render_template ('actyretro.html') #cambiar cuando Mock de actividades este on-line
+    return render_template ('actyretro.html') 
 
 @app.route('/notasprof')
 def notasprof():

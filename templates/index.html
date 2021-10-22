@@ -25,6 +25,15 @@
             <label for=Password>Contraseña</label>
             <input type="password" placeholder="Password" name="Pw" id="Pw" minlength="8" required autofocus>
 
+            <label>Perfil:</label>
+            <div style="margin-bottom: 15px;">
+                <select name="selectrol" style="height: 29px; width: 70%;" required>
+                    <option value="">Seleccione</option>
+                    <option value="1">Docente</option>
+                    <option value="2">Estudiante</option>                        
+                </select>
+            </div>
+
             <input type="submit" value="Ingresar">
 
             <a href="/recuperar contrasena">Olvide mi contraseña</a><br>
