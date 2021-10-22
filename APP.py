@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, flash, redirect
+from flask import Flask, render_template, request, redirect, flash, session, redirect
 from markupsafe import escape
 import os
 import dB
@@ -21,9 +21,9 @@ def login():
     
     # Preparar la consulta
     if (request.form['selectrol']=="2"):
-        sql = f'SELECT Contraseña FROM Estudiantes WHERE DNI="{usr}"'
+        sql = f'SELECT Nombres, Contraseña FROM Estudiantes WHERE DNI="{usr}"'
     elif (request.form['selectrol']=="1"):
-        sql = f'SELECT Contraseña FROM Profesores WHERE ID="{usr}"'    
+        sql = f'SELECT Nombres, Contraseña FROM Profesores WHERE ID="{usr}"'    
 
     # Ejecutar la consulta
     res = seleccion(sql)
@@ -33,17 +33,15 @@ def login():
         return render_template('index.html')
     else:
         # Recupero el valor de la clave
-        clave = str(res[0][0])
-        print(clave)
+        clave = str(res[0][1])
+        
         if clave == cla:
+            session.clear()
+            session['nom'] = res[0][0]
             return redirect('/paginicio/')
         else:
             flash('ERROR: Clave invalida')
             return render_template('index.html')
-
-@app.route('/paginicio/',methods=["GET", "POST"])   
-def paginicio():
-    return render_template ('paginicio.html')
 
 @app.route('/registro/',methods=['GET','POST'])
 def registro_datos():
@@ -85,12 +83,23 @@ def registro_datos():
             cursosObj.execute(strsql)            
             conexion.commit()
             conexion.close()
-            
+        
+        flash("Registro Exitoso")
         return render_template ('index.html')
 
-@app.route('/plantilla/')
-def plantilla():
-    return render_template ('plantilla.html')
+@app.route('/paginicio/')   
+def paginicio():
+    if "nom" in session:
+        perfnom = session['nom']
+        return render_template ('paginicio.html', nombres= perfnom)
+    else:
+        flash("Inicie sesión para utilizar plataforma")
+        return render_template ('index.html')
+
+@app.route('/logout/')
+def logout():
+    session.clear()
+    return redirect('/')
 
 @app.route('/recuperar contrasena')
 def recuperar_contrasena():
