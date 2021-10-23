@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edicion de datos</title>
+    <link rel='stylesheet' type='text/css' href="{{url_for('static', filename='css/estilo2.css')}}" />
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="containerheader">
+        <div class="boxheader">
+            <img src="{{url_for('static', filename='img/LA_SALLE_AN.gif')}}" alt="ULogo" style="width:90%; height:auto;" />
+
+        </div>
+        <div class="boxheader"></div>
+        <div class="boxheader"></div>
+        <div class="boxheader"></div>
+        <div class="boxheader">
+            <div style="width: auto;">
+                <img src="{{url_for('static', filename='img/user2.ico')}}" alt="User" style="width:25%;height:auto; float: right;" />
+
+            </div>
+            <div style="width: auto; text-align: center; padding-left: 80px;">
+                <a href="#">
+                    <h4><b>Perfil</b></h4>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <h1>Registro de Materias</h1>
+    </div>
+
+    <!-- The flexible grid -->
+    <div class="Containermain">
+        <div class="divisiones"></div>
+        <div class="divisiones">
+
+            <fieldset>
+                <legend style="font-weight:bold; color:#d4d4d4;">Datos para la creacion de la materia</legend>
+                <form action="/registroMat/" method="POST" name="registroMat">
+
+                    <p>Id de la materia: </p>
+                    <p> <input type="number" name="iddemateria" required autofocus size="40" placeholder="ID de materia"></p>
+                    <p>Nombre de la materia: </p>
+                    <p> <input type="text" name="nombremat" required size="40" placeholder="Nombre de la materia"></p>
+
+                    <p>Id del grupo:</p>
+                    <select name="IDgrupo">
+                        <option value="0">Seleccione</option>
+                        <option value="D">Diurna</option>
+                        <option value="N">Nocturna</option>
+                    </select>
+
+                    <p>Id del Docente:</p>
+                    <select name="IDdocente">
+                        <option value="0">Seleccione</option>
+                        <option value="D">Diurna</option>
+                        <option value="N">Nocturna</option>
+                    </select>
+
+
+
+
+                    </p>
+                    <div class="row">
+                        <a href="/paginicio/"><input type="submit" value="Enviar"></a>
+                        <input type="reset" value="Borrar Todo">
+                    </div>
+
+                </form>
+            </fieldset>
+
+
+
+        </div>
+        <div class="divisiones"></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <a href="#">© copyright Team8</a>
+    </div>
+</body>
+
+</html>
