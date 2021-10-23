@@ -13,6 +13,47 @@ app.secret_key = os.urandom(24)
 def inicio():
     return render_template('index.html')
 
+@app.route('/registroGrup/',methods=['GET','POST'])
+def registro_grupos():
+    if request.method == 'GET':
+        return render_template('FormularioGrupos.html')
+    else:
+            grupoid=request.form['iddegrupo']
+            Nombregrup=request.form['nombre']
+            semestre=request.form['semestre']
+            jornada=request.form['Jornada']
+
+            conexion=dB.base_conexion()
+            strsql="insert into Grupos (GrupoID, Nombre, Semestre,Jornada) values('{}','{}','{}','{}')" .format(grupoid,Nombregrup,semestre,jornada)
+            cursosObj=conexion.cursor()
+            cursosObj.execute(strsql)
+            conexion.commit()
+            conexion.close()
+
+            flash("Registro Exitoso")
+            return render_template ('paginicio.html')
+
+@app.route('/registroMat/',methods=['GET','POST'])
+def registro_materias():
+    if request.method == 'GET':
+        return render_template('FormularioMaterias.html')
+    else:
+            materiaid=request.form['iddemateria']
+            Nombremat=request.form['nombremat']
+            IDgrupo=request.form['IDgrupo']
+            IDprofesor=request.form['IDdocente']
+
+            conexion=dB.base_conexion()
+            strsql="insert into Materias (MateriaID, Nombre, Grupoid,Profesorid) values('{}','{}','{}','{}')" .format(materiaid,Nombremat,IDgrupo,IDprofesor)
+            cursosObj=conexion.cursor()
+            cursosObj.execute(strsql)
+            conexion.commit()
+            conexion.close()
+
+            flash("Registro Exitoso")
+            return render_template ('paginicio.html')
+
+
 @app.route('/index/', methods=["POST"])
 def login():
     # recuperar los datos del formulario
