@@ -74,12 +74,14 @@ def login():
         return render_template('index.html')
     else:
         # Recupero el valor de la clave
-        clave = str(res[0][1])
-        
+        clave = str(res[0][1])        
         if clave == cla:
             session.clear()
             session['nom'] = res[0][0]
             session['usuario'] = usr
+
+            print(session['usuario'])
+
             return redirect('/paginicio/')
         else:
             flash('ERROR: Clave invalida')
@@ -115,10 +117,7 @@ def registro_datos():
             Estado=request.form['Documento']
             Contraseña=request.form['contrasena']
             prueba = request.form['selectrol']
-            print(prueba)
-            if prueba == "1":
-                print(True)
-
+            
             conexion=dB.base_conexion()
             strsql="insert into Profesores (ID, Nombres, Genero,Contraseña) values('{}','{}','{}','{}')" .format(Id,Nombres,Genero,Contraseña)
             cursosObj=conexion.cursor()
@@ -155,24 +154,27 @@ def ResumenNotas():
 def perfil():
     return render_template ('infoPersonal.html')
 
-@app.route('/actividades')
+@app.route('/actividades/')
 def actividades():
-    perfusuario = session['usuario'] 
-    # Preparar la consulta
-    sql = f'SELECT Grupoid FROM Estudiantes WHERE Profesorid="{perfusuario}"'
-    # Ejecutar la consulta
-    res = seleccion(sql)
 
-    print(res)
-
-    # Proceso la respuesta
-    if len(res)==0:
-        flash('ERROR: No tiene grupos asignados')
-        return render_template ('actyretro.html')
+    if "usuario" in session:
+        perfusuario = str(session['usuario'])
+        print(perfusuario)
+        # Preparar la consulta
+        sql = f'SELECT Grupoid FROM Materias WHERE Profesorid="{perfusuario}"'
+        # Ejecutar la consulta
+        res = seleccion(sql)
+        print(res)
+        # Proceso la respuesta
+        if len(res)==0:
+            flash('ERROR: No tiene grupos asignados')
+            return render_template ('actyretro.html')
+        else:
+            return render_template ('actyretro.html', grupos = res)
+        
     else:
-        return render_template ('actyretro.html', grupos = res)
-
-
+        flash("Inicie sesión para utilizar plataforma")
+        return render_template ('index.html')
      
 
 @app.route('/notasprof')
