@@ -73,9 +73,12 @@
                     <div class=container-uploadact style="padding-right: 12px; padding-bottom: 12px; padding-left: 12px; border-top: 4px solid rgb(17, 84,139);">
                         <form action="">
                             <br/>
-                            <label>Materia</label><br/>
+                            <label>Grupo</label><br/>
                             <select class="controls" style="border: 2px solid rgb(17, 84,139); border-radius: 3px;">
                                 <option>Selecciona</option>
+                                {%for grupo in grupos%}
+                                    <option>{{ grupo }}</option>
+                                {% endfor %}
                             </select><br/>
                             <label>Descripcion</label><br/>
                             <textarea class="controls" rows="6" style="border: 2px solid rgb(17, 84,139); border-radius: 3px;"></textarea> 
@@ -97,31 +100,7 @@
                 <div class="marco" style="margin-top: 10px;">
                     <h2>Actividades</h2> 
                     <div class="datatable-container">
-                        <div class="header-tools">
-                            <div class="tools">
-                                <ul>
-                                    <li><span><input type="checkbox"></span></li>
-                                    <li>
-                                        <button>
-                                            <i class="material-icons">search</i>
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button>
-                                            <i class="material-icons">delete</i>
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button>
-                                            <i class="material-icons">share</i>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="search">
-                                <input type="text" name="" id="" class="search-input">
-                            </div>
-                        </div>
+                        
                         <div style="padding-left: 12px; padding-right: 12px;">
                             <table class="datatable">
                                 <thead>

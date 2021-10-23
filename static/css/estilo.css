@@ -50,6 +50,11 @@ body {
     padding: 15px;     
 }
 
+.prueba {
+    text-align                      : center;
+    border-bottom                   : 5px solid rgb(17, 84,139);
+}
+
 /* Footer */
 .footer {
     
