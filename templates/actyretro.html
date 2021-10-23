@@ -73,11 +73,14 @@
                     <div class=container-uploadact style="padding-right: 12px; padding-bottom: 12px; padding-left: 12px; border-top: 4px solid rgb(17, 84,139);">
                         <form action="">
                             <br/>
+                            {% for msg in get_flashed_messages() %}
+                            <div class="fila">{{ msg }}</div>
+                            {% endfor %}
                             <label>Grupo</label><br/>
                             <select class="controls" style="border: 2px solid rgb(17, 84,139); border-radius: 3px;">
                                 <option>Selecciona</option>
                                 {%for grupo in grupos%}
-                                    <option>{{ grupo }}</option>
+                                    <option>{{ grupo.0 }}</option>
                                 {% endfor %}
                             </select><br/>
                             <label>Descripcion</label><br/>

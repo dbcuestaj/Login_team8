@@ -38,6 +38,7 @@ def login():
         if clave == cla:
             session.clear()
             session['nom'] = res[0][0]
+            session['usuario'] = usr
             return redirect('/paginicio/')
         else:
             flash('ERROR: Clave invalida')
@@ -115,7 +116,23 @@ def perfil():
 
 @app.route('/actividades')
 def actividades():
-    return render_template ('actyretro.html') 
+    perfusuario = session['usuario'] 
+    # Preparar la consulta
+    sql = f'SELECT Grupoid FROM Estudiantes WHERE Profesorid="{perfusuario}"'
+    # Ejecutar la consulta
+    res = seleccion(sql)
+
+    print(res)
+
+    # Proceso la respuesta
+    if len(res)==0:
+        flash('ERROR: No tiene grupos asignados')
+        return render_template ('actyretro.html')
+    else:
+        return render_template ('actyretro.html', grupos = res)
+
+
+     
 
 @app.route('/notasprof')
 def notasprof():
