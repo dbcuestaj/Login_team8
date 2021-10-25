@@ -171,7 +171,7 @@ def actividades():
         print(resMaterias)
 
         # Proceso la respuesta
-        if len(res)==0:
+        if len(resMaterias)==0:
             flash('No tiene grupos asignados')
             return render_template ('actividades.html')
         else:
