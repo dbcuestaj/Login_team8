@@ -3,6 +3,9 @@ from markupsafe import escape
 import os
 import dB
 from dB import accion, seleccion
+from hashlib import sha256
+from werkzeug.security import generate_password_hash,check_password_hash    
+
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -75,7 +78,7 @@ def login():
     else:
         # Recupero el valor de la clave
         clave = str(res[0][1])        
-        if clave == cla:
+        if check_password_hash(clave,cla):
             session.clear()
             session['nom'] = res[0][0]
             session['usuario'] = usr
@@ -98,7 +101,7 @@ def registro_datos():
             Ape=request.form['apellido']
             Nombres= Nom + " " + Ape
             Genero=request.form['genero']
-            Contraseña=request.form['contrasena']
+            Contraseña=generate_password_hash(request.form['contrasena'])
             Nacido=request.form['fecha de nacimiento']
             
             conexion=dB.base_conexion()
@@ -115,7 +118,7 @@ def registro_datos():
             Nombres= Nom + " " + Ape
             Genero=request.form['genero']
             Estado=request.form['Documento']
-            Contraseña=request.form['contrasena']
+            Contraseña=generate_password_hash(request.form['contrasena'])
             prueba = request.form['selectrol']
             
             conexion=dB.base_conexion()
