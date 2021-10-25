@@ -1,0 +1,188 @@
+{% extends "plantilla.html" %}
+
+{% block title %}
+
+Actividades
+
+{% endblock %}
+
+{% block cuerpo %} 
+
+<!-- The flexible grid -->
+<div class="Containermain" style="width: 100%; background-color: white;">
+    <div class="aside">
+                        
+        <div class="event-container">
+            <h4 class="mes">Octubre</h4>
+            <div class="event">
+                <div class="event-left"><p>Dia</p></div>
+                <div class="event-right">
+                    <h5 style="text-transform: uppercase;">Evento</h5>
+                    <div>Descripción</div>
+                </div>
+            </div>
+        </div>
+        
+        <a href="https://www.mooc.org/es/" target="_blank"><button><b>Massive Open Online Courses</b></button></a>
+        <a href="https://www.wdl.org/es/" target="_blank"><button><b>Biblioteca Digital</b></button></a>
+        <a href="/logout/"><button><b>Cerrar sesión</b></button></a>
+        
+                                
+        <div class="social-container">
+            <a href="https://co.linkedin.com/school/universidad-de-la-salle/" target="_blank" style="margin-right: 5px;"> <i class="fa fa-linkedin-square fa-2x"></i></a>
+            <a href="https://twitter.com/unisalle?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" style="margin-right: 5px;"> <i class="fa fa-twitter-square fa-2x"></i></a>
+            <a href="https://www.facebook.com/U.deLaSalle/" target="_blank" style="margin-right: 5px;"> <i class="fa fa-facebook-square fa-2x"></i></a>
+        </div>
+    </div>
+    
+    <div class="right">                                
+        <div class="marco" style="margin-top: 20px; width: 40%;">
+            <h2>Crear Actividad</h2> 
+            <div class=container-uploadact style="padding-right: 12px; padding-bottom: 12px; padding-left: 12px; border-top: 4px solid rgb(17, 84,139);">
+                <form action="/actividades/" method="Post" name="Actividades">                        
+                    <br/>
+                    {% for msg in get_flashed_messages() %}
+                    <div class="fila">{{ msg }}</div>
+                    {% endfor %}
+                    <label>Grupo</label><br/>
+                    <select class="controls" style="border: 2px solid rgb(17, 84,139); border-radius: 3px;">
+                        <option value="">Selecciona</option>
+                        {%for grupo in materias%}
+                            <option value="{{grupo.2}}">{{ grupo.2 }}</option>
+                        {% endfor %}
+                    </select><br/>
+                    <label>Descripcion</label><br/>
+                    <textarea class="controls" rows="6" style="border: 2px solid rgb(17, 84,139); border-radius: 3px;"></textarea> 
+                    <br/>
+                    <label>Porcentaje</label><br/>
+                    <input class="controls" type="number"><br/>
+                    <label>Fecha de Entrega</label><br/>
+                    <input class="controls" type="date"><br/>
+                    <label>Adjuntos</label><br/>
+                    <div class="div_file">
+                        <p style="text-align: center; color: rgb(255, 204,0);">Subir Archivo</p>
+                        <input class="btnsubir" type="file">
+                    </div>
+                    <input type="submit" class="submit" style="background-color: rgb(17, 84,139); color: rgb(255, 204,0); width: 150px; height: 25px;"><br/>
+                </form>
+            </div>
+        </div> 
+        
+        <div class="marco" style="margin-top: 10px;">
+            <h2>Actividades</h2> 
+            <div class="datatable-container">
+                
+                <div style="padding-left: 12px; padding-right: 12px;">
+                    <table class="datatable">
+                        <thead>
+                            <tr>
+                                <th>ESTADO</th>
+                                <th>MATERIA</th>
+                                <th>NOMBRE</th>
+                                <th>ID</th>
+                                <th>ESTUDIANTE</th>
+                                <th>FECHA ENTREGA</th>
+                                <th>ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="EnDesarrollo"></span></td>
+                                <td>Bases de Datos</td>
+                                <td>Reto1</td>
+                                <td></td>
+                                <td>Angelica Barreto</td>
+                                <td>8/10/2021</td>
+                                <td>
+                                    <button class="btneditar">Ver</button>                                            
+                                </td>                                        
+                            </tr>
+                            <tr>
+                                <td><span class="NoEntregada"></span></td>
+                                <td>Gestión de Información</td>
+                                <td>Reto1</td>
+                                <td></td>
+                                <td>Diego Bladimir</td>   
+                                <td>8/10/2021</td>
+                                <td>
+                                    <button class="btneditar">Ver</button>                                             
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="EnDesarrollo"></span></td>
+                                <td>Álgebra</td>
+                                <td>Reto2</td>
+                                <td></td>
+                                <td>John Duran</td>                                        
+                                <td>8/10/2021</td>
+                                <td>
+                                    <button class="btneditar">Ver</button> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="Entregada"></span></td>
+                                <td>Desarrollo Web Básico</td>
+                                <td>Reto1</td>
+                                <td></td>
+                                <td>Edwin Pacheco</td>   
+                                <td>8/10/2021</td>
+                                <td>
+                                    <button class="btneditar">Ver</button> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="Entregada"></span></td>
+                                <td>Bases de Datos</td>
+                                <td>Reto2</td>
+                                <td></td>
+                                <td>Nestor Martines</td>
+                                <td>8/10/2021</td>
+                                <td>
+                                    <button class="btneditar">Ver</button> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="NoEntregada"></span></td>
+                                <td>Desarrollo Web Básico</td>
+                                <td>Reto2</td>
+                                <td></td>
+                                <td>Nicolas Porras</td>
+                                <td>8/10/2021</td>
+                                <td>
+                                    <button class="btneditar">Ver</button> 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="footer-tools">
+                    <div class="list-items">
+                        Mostrar
+                        <select name="n-entries" id="n-entries" class="n-entries">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                        </select> 
+                        registros 
+                    </div>
+                    <div class="pages">
+                        <ul>
+                            <li><span class="active">1</span></li>
+                            <li><button>2</button></li>
+                            <li><button>3</button></li>
+                            <li><button>4</button></li>
+                            <li><span>...</span></li>
+                            <li><button>9</button></li>
+                            <li><button>10</button></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        
+        </div>
+            
+    </div>                
+</div>
+{% endblock %}

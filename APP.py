@@ -160,26 +160,28 @@ def perfil():
 @app.route('/actividades/')
 def actividades():
 
-    if "usuario" in session:
+    if "nom" in session:
+        perfnom = session['nom']
         perfusuario = str(session['usuario'])
         print(perfusuario)
-        # Preparar la consulta
-        sql = f'SELECT Grupoid FROM Materias WHERE Profesorid="{perfusuario}"'
-        # Ejecutar la consulta
-        res = seleccion(sql)
-        print(res)
+
+        sql = f'SELECT MateriaID, Nombre, GrupoId FROM Materias WHERE Profesorid="{perfusuario}"'
+        
+        resMaterias = seleccion(sql)
+        print(resMaterias)
+
         # Proceso la respuesta
         if len(res)==0:
-            flash('ERROR: No tiene grupos asignados')
-            return render_template ('actyretro.html')
+            flash('No tiene grupos asignados')
+            return render_template ('actividades.html')
         else:
-            return render_template ('actyretro.html', grupos = res)
-        
+            return render_template ('actividades.html', materias = res, nombres= perfnom)
+
     else:
         flash("Inicie sesión para utilizar plataforma")
         return render_template ('index.html')
-     
 
+    
 @app.route('/notasprof')
 def notasprof():
     return render_template ('notasprofe.html')    
