@@ -13,7 +13,7 @@ function Registro() {
 }
 
 function validar_contrasena(contrasena) {
-    if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/i.test(contrasena)) {
+    if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,}$/i.test(contrasena)) {
         return true
     } else {
         return false
