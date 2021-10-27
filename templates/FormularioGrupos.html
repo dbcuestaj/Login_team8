@@ -1,83 +1,42 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends "plantilla.html" %} {% block title %} PaginaInicio {% endblock %} {% block cuerpo %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edicion de datos</title>
-    <link rel='stylesheet' type='text/css' href="{{url_for('static', filename='css/estilo2.css')}}" />
 
-</head>
 
-<body>
-    <!-- Header -->
-    <div class="containerheader">
-        <div class="boxheader">
-            <img src="{{url_for('static', filename='img/LA_SALLE_AN.gif')}}" alt="ULogo" style="width:90%; height:auto;" />
+<!-- The flexible grid -->
+<div class="Containermain">
+    <div class="divisiones"></div>
+    <div class="divisiones">
 
-        </div>
-        <div class="boxheader"></div>
-        <div class="boxheader"></div>
-        <div class="boxheader"></div>
-        <div class="boxheader">
-            <div style="width: auto;">
-                <img src="{{url_for('static', filename='img/user2.ico')}}" alt="User" style="width:25%;height:auto; float: right;" />
+        <fieldset>
+            <legend style="font-weight:bold; color:#000000;">Creación de grupo</legend>
+            <form action="/registroGrup/" method="POST" name="registroGrup">
 
-            </div>
-            <div style="width: auto; text-align: center; padding-left: 80px;">
-                <a href="#">
-                    <h4><b>Perfil</b></h4>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <h1>Registro de grupos</h1>
-    </div>
-
-    <!-- The flexible grid -->
-    <div class="Containermain">
-        <div class="divisiones"></div>
-        <div class="divisiones">
-
-            <fieldset>
-                <legend style="font-weight:bold; color:#d4d4d4;">Datos para la creacion de grupo</legend>
-                <form action="/registroGrup/" method="POST" name="registroGrup">
-
-                    <p>Id del grupo: </p>
-                    <p> <input type="number" name="iddegrupo" required autofocus size="40" placeholder="ID del grupo"></p>
-                    <p>Nombre del grupo: </p>
-                    <p> <input type="text" name="nombre" required size="40" placeholder="Nombre del grupo"></p>
-                    <p>Semestre del grupo:</p>
-                    <p> <input type="number" name="semestre" required autofocus size="40" placeholder="Semestre del grupo"></p>
-                    <p>Jornada del grupo:</p>
-                    <select name="Jornada">
+                <p>Id del grupo: </p>
+                <p> <input type="number" name="iddegrupo" required autofocus size="40" placeholder="ID del grupo"></p>
+                <p>Nombre del grupo: </p>
+                <p> <input type="text" name="nombre" required size="40" placeholder="Nombre del grupo"></p>
+                <p>Semestre del grupo:</p>
+                <p> <input type="number" name="semestre" required autofocus size="40" placeholder="Semestre del grupo"></p>
+                <p>Jornada del grupo:</p>
+                <select name="Jornada">
                         <option value="0">Seleccione</option>
                         <option value="D">Diurna</option>
                         <option value="N">Nocturna</option>
                     </select>
-                    </p>
-                    <div class="row">
-                        <a href="/paginicio/"><input type="submit" value="Enviar"></a>
-                        <input type="reset" value="Borrar Todo">
-                    </div>
+                </p>
+                <div class="row">
+                    <a href="/paginicio/"><input type="submit" value="Enviar"></a>
+                    <input type="reset" value="Borrar Todo">
+                </div>
 
-                </form>
-            </fieldset>
+            </form>
+        </fieldset>
 
 
 
-        </div>
-        <div class="divisiones"></div>
     </div>
+    <div class="divisiones"></div>
+</div>
 
-    <!-- Footer -->
-    <div class="footer">
-        <a href="#">© copyright Team8</a>
-    </div>
-</body>
 
-</html>
+{% endblock %}

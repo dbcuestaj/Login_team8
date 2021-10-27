@@ -67,7 +67,9 @@ def login():
     if (request.form['selectrol']=="2"):
         sql = f'SELECT Nombres, Contraseña FROM Estudiantes WHERE DNI="{usr}"'
     elif (request.form['selectrol']=="1"):
-        sql = f'SELECT Nombres, Contraseña FROM Profesores WHERE ID="{usr}"'    
+        sql = f'SELECT Nombres, Contraseña FROM Profesores WHERE ID="{usr}"'  
+    elif (request.form['selectrol']=="3"):
+        sql = f'SELECT Nombres, Contraseña FROM Profesores WHERE ID="{usr}"'  
 
     # Ejecutar la consulta
     res = seleccion(sql)
@@ -95,6 +97,7 @@ def registro_datos():
     if request.method == 'GET':
         return render_template('FormularioPrimerIngreso.html')
     else:
+
         if (request.form['selectrol']=="2"):
             dNI=request.form['Documento']
             Nom=request.form['nombre']
@@ -128,6 +131,23 @@ def registro_datos():
             conexion.commit()
             conexion.close()
         
+        ''' if (request.form['selectrol']=="3"):
+            Id=request.form['Documento']
+            Nom=request.form['nombre']
+            Ape=request.form['apellido']
+            Nombres= Nom + " " + Ape
+            Genero=request.form['genero']
+            Estado=request.form['Documento']
+            Contraseña=generate_password_hash(request.form['contrasena'])
+            prueba = request.form['selectrol']
+            
+            conexion=dB.base_conexion()
+            strsql="insert into SuperAdmin (ID, Nombres, Genero,Contraseña) values('{}','{}','{}','{}')" .format(Id,Nombres,Genero,Contraseña)
+            cursosObj=conexion.cursor()
+            cursosObj.execute(strsql)            
+            conexion.commit()
+            conexion.close() '''
+
         flash("Registro Exitoso")
         return render_template ('index.html')
 

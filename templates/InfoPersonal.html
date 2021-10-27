@@ -14,8 +14,7 @@
     <!-- Header -->
     <div class="containerheader">
         <div class="boxheader">
-            <a href="paginicio">
-            <img src="{{url_for('static', filename='img/LA_SALLE_AN.gif')}}" alt="ULogo" style="width:90%; height:auto;" />
+            <a href="/paginicio/"><img src="{{url_for('static', filename='img/LA_SALLE_AN.gif')}}" alt="ULogo" style="width:90%; height:auto;" />
             </a>
         </div>
         <div class="boxheader"></div>
@@ -27,7 +26,7 @@
             </div>
             <div style="width: auto; text-align: center; padding-left: 80px;">
                 <a href="/perfil">
-                    <h4><b>Perfil</b></h4>
+                    <h4><b>{{nombres}}</b></h4>
                 </a>
             </div>
         </div>
@@ -64,7 +63,7 @@
                     <p><input type="number" name="telefono" required size="40" readonly value="3209793039"></p>
 
                     <p>
-                        <input type="button" onclick="location.href='/FormularioCambio.html'" value="Editar Datos">
+                        <a href="/formularioCambio"><input type="button" value="Editar Datos"></a>
 
                         <script>
                             function mensaje(texto) {
