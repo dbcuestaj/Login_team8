@@ -32,7 +32,7 @@ body{
     border-radius:10px;
     color: white;
     top:50%;
-    left:50%;
+    left:40%;
     position:absolute;
     transform: translate(90%,-50%);
     box-sizing: border-box;

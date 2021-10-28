@@ -33,14 +33,14 @@ button {
 }
 
 .aside button {
-    width                           : 200px;
+    width                           : 170px;
     background-color                : rgb(17, 84,139);
     color                           : rgb(255, 204,0);
     text-decoration                 : none;
-    padding                         : 14px 20px;
-    text-align                      : center;
-    margin                          : 5px;
-    border-radius                   : 15px;
+    padding                         : 12px 15px;
+    text-align                      : center;  
+    margin                          : 5px;  
+    border-radius                   : 15px; 
 }
 
 .aside button:hover {

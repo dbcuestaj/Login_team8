@@ -33,7 +33,7 @@ def registro_grupos():
             conexion.close()
 
             flash("Registro Exitoso")
-            return render_template ('/registroGrup/')
+            return redirect ('/registroGrup/')
 
 @app.route('/registroMat/',methods=['GET','POST'])
 def registro_materias():
