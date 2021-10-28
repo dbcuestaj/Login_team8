@@ -1,4 +1,4 @@
-{% extends "plantilla.html" %} {% block title %} PaginaInicio {% endblock %} {% block cuerpo %}
+{% extends "plantilla.html" %} {% block title %} Admin Grupos {% endblock %} {% block cuerpo %}
 
 
 
@@ -11,12 +11,13 @@
             <legend style="font-weight:bold; color:#000000;">Creación de grupo</legend>
             <form action="/registroGrup/" method="POST" name="registroGrup">
 
+                {% for msg in get_flashed_messages() %}
+                <div class="fila">{{ msg }}</div>
+                {% endfor %}
                 <p>Id del grupo: </p>
                 <p> <input type="number" name="iddegrupo" required autofocus size="40" placeholder="ID del grupo"></p>
                 <p>Nombre del grupo: </p>
-                <p> <input type="text" name="nombre" required size="40" placeholder="Nombre del grupo"></p>
-                <p>Semestre del grupo:</p>
-                <p> <input type="number" name="semestre" required autofocus size="40" placeholder="Semestre del grupo"></p>
+                <p> <input type="text" name="nombre" required size="40" placeholder="Nombre del grupo"></p>                
                 <p>Jornada del grupo:</p>
                 <select name="Jornada">
                         <option value="0">Seleccione</option>
@@ -25,7 +26,7 @@
                     </select>
                 </p>
                 <div class="row">
-                    <a href="/paginicio/"><input type="submit" value="Enviar"></a>
+                    <input type="submit" value="Enviar">
                     <input type="reset" value="Borrar Todo">
                 </div>
 

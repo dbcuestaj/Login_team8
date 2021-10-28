@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, flash, session, redirect
+from flask import Flask, render_template, request, redirect, flash, session
 from markupsafe import escape
 import os
 import dB
@@ -23,18 +23,17 @@ def registro_grupos():
     else:
             grupoid=request.form['iddegrupo']
             Nombregrup=request.form['nombre']
-            semestre=request.form['semestre']
             jornada=request.form['Jornada']
 
             conexion=dB.base_conexion()
-            strsql="insert into Grupos (GrupoID, Nombre, Semestre,Jornada) values('{}','{}','{}','{}')" .format(grupoid,Nombregrup,semestre,jornada)
+            strsql="insert into Grupos (GrupoID, GNombre, Jornada) values('{}','{}','{}')" .format(grupoid,Nombregrup,jornada)
             cursosObj=conexion.cursor()
             cursosObj.execute(strsql)
             conexion.commit()
             conexion.close()
 
             flash("Registro Exitoso")
-            return render_template ('paginicio.html')
+            return render_template ('/registroGrup/')
 
 @app.route('/registroMat/',methods=['GET','POST'])
 def registro_materias():
@@ -43,18 +42,17 @@ def registro_materias():
     else:
             materiaid=request.form['iddemateria']
             Nombremat=request.form['nombremat']
-            IDgrupo=request.form['IDgrupo']
-            IDprofesor=request.form['IDdocente']
-
+            semestre=request.form['semestre']
+            
             conexion=dB.base_conexion()
-            strsql="insert into Materias (MateriaID, Nombre, Grupoid,Profesorid) values('{}','{}','{}','{}')" .format(materiaid,Nombremat,IDgrupo,IDprofesor)
+            strsql="insert into Materias (CodMateria, Nombre, Semestre) values('{}','{}','{}')" .format(materiaid,Nombremat,semestre)
             cursosObj=conexion.cursor()
             cursosObj.execute(strsql)
             conexion.commit()
             conexion.close()
 
             flash("Registro Exitoso")
-            return render_template ('paginicio.html')
+            return render_template ('/registroMat/')
 
 
 @app.route('/index/', methods=["POST"])
@@ -129,25 +127,8 @@ def registro_datos():
             cursosObj=conexion.cursor()
             cursosObj.execute(strsql)            
             conexion.commit()
-            conexion.close()
+            conexion.close()        
         
-        ''' if (request.form['selectrol']=="3"):
-            Id=request.form['Documento']
-            Nom=request.form['nombre']
-            Ape=request.form['apellido']
-            Nombres= Nom + " " + Ape
-            Genero=request.form['genero']
-            Estado=request.form['Documento']
-            Contraseña=generate_password_hash(request.form['contrasena'])
-            prueba = request.form['selectrol']
-            
-            conexion=dB.base_conexion()
-            strsql="insert into SuperAdmin (ID, Nombres, Genero,Contraseña) values('{}','{}','{}','{}')" .format(Id,Nombres,Genero,Contraseña)
-            cursosObj=conexion.cursor()
-            cursosObj.execute(strsql)            
-            conexion.commit()
-            conexion.close() '''
-
         flash("Registro Exitoso")
         return render_template ('index.html')
 
@@ -177,29 +158,47 @@ def ResumenNotas():
 def perfil():
     return render_template ('infoPersonal.html')
 
-@app.route('/actividades/')
+@app.route('/actividades/', methods=['GET','POST'])
 def actividades():
 
-    if "nom" in session:
-        perfnom = session['nom']
-        perfusuario = str(session['usuario'])
-        print(perfusuario)
+    if request.method == 'GET':
+        if "nom" in session:
+            perfnom = session['nom']
+            perfusuario = str(session['usuario'])
+                
+            sql = f'SELECT Materias.GrupoId, Grupos.Nombre FROM Materias INNER JOIN Grupos ON Materias.GrupoId = Grupos.GrupoID WHERE Profesorid="{perfusuario}"'
+            
+            resMaterias = seleccion(sql)
+            
+            # Proceso la respuesta
+            if len(resMaterias)==0:
+                flash('No tiene grupos asignados')
+                return render_template ('actividades.html')
+            else:
+                return render_template ('actividades.html', materias = resMaterias, nombres= perfnom)
 
-        sql = f'SELECT MateriaID, Nombre, GrupoId FROM Materias WHERE Profesorid="{perfusuario}"'
-        
-        resMaterias = seleccion(sql)
-        print(resMaterias)
-
-        # Proceso la respuesta
-        if len(resMaterias)==0:
-            flash('No tiene grupos asignados')
-            return render_template ('actividades.html')
         else:
-            return render_template ('actividades.html', materias = res, nombres= perfnom)
+            flash("Inicie sesión para utilizar plataforma")
+            return render_template ('index.html')
 
     else:
-        flash("Inicie sesión para utilizar plataforma")
-        return render_template ('index.html')
+        # recuperar los datos del formulario    
+        actgru = escape(request.form["grupoactvidades"].strip())
+        actdes = escape(request.form["descripcion"].strip())
+        actporc = escape(request.form["porcentaje"].strip())
+        actfentre = request.form['fecentrega']
+
+        
+        conexion=dB.base_conexion()
+        cursosObj=conexion.cursor()
+        strsql="insert into Actividades(Descripcion, Porcentaje, Fecha_Entrega) values('{}', '{}', '{}')".format(actdes, actporc, actfentre)
+        print(strsql)
+        cursosObj.execute(strsql)            
+        conexion.commit()
+        conexion.close()
+
+        flash("Registro Exitoso")
+        return redirect('/actividades/')
 
     
 @app.route('/notasprof')

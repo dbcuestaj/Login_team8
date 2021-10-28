@@ -1,4 +1,4 @@
-{% extends "plantilla.html" %} {% block title %} PaginaInicio {% endblock %} {% block cuerpo %}
+{% extends "plantilla.html" %} {% block title %} Materias {% endblock %} {% block cuerpo %}
 
 
 
@@ -11,32 +11,20 @@
             <legend style="font-weight:bold; color:#030303;">Creación de la materia</legend>
             <form action="/registroMat/" method="POST" name="registroMat">
 
+                {% for msg in get_flashed_messages() %}
+                <div class="fila">{{ msg }}</div>
+                {% endfor %}
                 <p>Id de la materia: </p>
                 <p> <input type="number" name="iddemateria" required autofocus size="40" placeholder="ID de materia"></p>
                 <p>Nombre de la materia: </p>
                 <p> <input type="text" name="nombremat" required size="40" placeholder="Nombre de la materia"></p>
 
-
-                <p>Id del grupo:</p>
-                <select name="IDgrupo">
-                        <option value="0">Seleccione</option>
-                        <option value="D">Diurna</option>
-                        <option value="N">Nocturna</option>
-                    </select>
-
-                <p>Id del Docente:</p>
-                <select name="IDdocente">
-                        <option value="0">Seleccione</option>
-                        <option value="D">Diurna</option>
-                        <option value="N">Nocturna</option>
-                    </select>
-
-
-
-
+                <p>Semestre de la Materia:</p>
+                <p> <input type="number" name="semestre" required autofocus size="40" placeholder="Semestre de la materia"></p>
+           
                 </p>
                 <div class="row">
-                    <a href="/paginicio/"><input type="submit" value="Enviar"></a>
+                    <input type="submit" value="Enviar">                    
                     <input type="reset" value="Borrar Todo">
                 </div>
 

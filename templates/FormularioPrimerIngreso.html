@@ -50,11 +50,11 @@
                 <div class="row" style="display: inline-block;">
                     <input type="radio" id="mujer" name="genero" value="F">   <label for="html">Femenino</label>
                     <input type="radio" id="hombre" name="genero" value="M">   <label for="html">Masculino</label>
+                    <input type="radio" id="X" name="genero" value="X">   <label for="html">X</label>
                 </div>
                 <label style="margin-bottom: 10px;">Fecha de nacimiento: </label><br>
-                <input class="row2" type="date" name="fecha de nacimiento"><br> {% for msg in get_flashed_messages() %}
-                <div class="row">{{ msg }}</div>
-                {% endfor %}
+                <input class="row2" type="date" name="fecha de nacimiento"><br> 
+                
                 <div class="row">
                     <a href="/index/"><input type="submit" value="Enviar"></a>
                     <input type="reset" value="Borrar Todo">

@@ -45,19 +45,19 @@ Actividades
                     <div class="fila">{{ msg }}</div>
                     {% endfor %}
                     <label>Grupo</label><br/>
-                    <select class="controls" style="border: 2px solid rgb(17, 84,139); border-radius: 3px;">
+                    <select name="grupoactvidades" class="controls" style="border: 2px solid rgb(17, 84,139); border-radius: 3px;">
                         <option value="">Selecciona</option>
                         {%for grupo in materias%}
-                            <option value="{{grupo.2}}">{{ grupo.2 }}</option>
+                            <option value="{{grupo.0}}">{{ grupo.1 }}</option>
                         {% endfor %}
                     </select><br/>
                     <label>Descripcion</label><br/>
-                    <textarea class="controls" rows="6" style="border: 2px solid rgb(17, 84,139); border-radius: 3px;"></textarea> 
+                    <textarea name="descripcion" class="controls" rows="6" style="border: 2px solid rgb(17, 84,139); border-radius: 3px;"></textarea> 
                     <br/>
                     <label>Porcentaje</label><br/>
-                    <input class="controls" type="number"><br/>
-                    <label>Fecha de Entrega</label><br/>
-                    <input class="controls" type="date"><br/>
+                    <input name="porcentaje" class="controls" type="number"><br/>
+                    <label>Fecha de Entrega</label><br/>                    
+                    <input class="controls" type="date" name="fecentrega"><br/>
                     <label>Adjuntos</label><br/>
                     <div class="div_file">
                         <p style="text-align: center; color: rgb(255, 204,0);">Subir Archivo</p>
