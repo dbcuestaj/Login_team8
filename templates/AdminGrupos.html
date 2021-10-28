@@ -1,0 +1,112 @@
+{% extends "plantilla.html" %} 
+{% block title %} Admin Grupos {% endblock %} 
+
+{% block cuerpo %}
+<div class="Containermain" style="width: 100%; background-color: white;">
+    <div class="aside">
+                        
+        <div class="event-container">
+            <h4 class="mes">Octubre</h4>
+            <div class="event">
+                <div class="event-left"><p>Dia</p></div>
+                <div class="event-right">
+                    <h5 style="text-transform: uppercase;">Evento</h5>
+                    <div>Descripción</div>
+                </div>
+            </div>
+        </div>
+        
+        <a href="https://www.mooc.org/es/" target="_blank"><button><b>Massive Open Online Courses</b></button></a>
+        <a href="https://www.wdl.org/es/" target="_blank"><button><b>Biblioteca Digital</b></button></a>
+        <a href="/logout/"><button><b>Cerrar sesión</b></button></a>
+                                    
+        <div class="social-container">
+            <a href="https://co.linkedin.com/school/universidad-de-la-salle/" target="_blank" style="margin-right: 5px;"> <i class="fa fa-linkedin-square fa-2x"></i></a>
+            <a href="https://twitter.com/unisalle?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" style="margin-right: 5px;"> <i class="fa fa-twitter-square fa-2x"></i></a>
+            <a href="https://www.facebook.com/U.deLaSalle/" target="_blank" style="margin-right: 5px;"> <i class="fa fa-facebook-square fa-2x"></i></a>
+        </div>
+    </div>
+    
+    <div class="right">                                
+        <div class="marco" style="margin-top: 20px; width: 30%;">
+            <h2>Crear Grupos</h2> 
+            <div class=container-uploadact style="padding-right: 12px; padding-bottom: 12px; padding-left: 12px; border-top: 4px solid rgb(17, 84,139);">
+                <form action="/registroGrup/" method="POST" name="registroGrup">
+
+                    {% for msg in get_flashed_messages() %}
+                    <div class="fila">{{ msg }}</div>
+                    {% endfor %}
+                    <input class="controls" type="text" name="iddegrupo" required autofocus size="40" placeholder="ID del Grupo">
+                    <input class="controls" type="text" name="nombre" required size="40" placeholder="Nombre del Grupo"><br/>              
+                    <label>Jornada del grupo:</label><br/>
+                    <select name="Jornada" class="controls" style="border: 2px solid rgb(17, 84,139); border-radius: 3px;">
+                            <option value="0">Seleccione</option>
+                            <option value="D">Diurna</option>
+                            <option value="N">Nocturna</option>
+                    </select><br/>
+                    <input type="submit" value="Guardar" style="background-color: rgb(17, 84,139); color: rgb(255, 204,0); width: 150px; height: 25px;"><br/>
+                    
+                </form>
+            </div>    
+        </div>
+        
+        <div class="marco" style="margin-top: 10px;">
+            <h2>Grupos </h2> 
+            <div class="datatable-container">
+                
+                <div style="padding-left: 12px; padding-right: 12px;">
+                    <table class="datatable">
+                        <thead>
+                            <tr>
+                                <th>ID GRUPO</th>
+                                <th>NOMBRE</th>
+                                <th>JORNADA</th>
+                                <th>ESTADO</th>
+                                <th>ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for grupo in grupos%}
+                                <tr>
+                                    <td>{{ grupo.0 }}</td> 
+                                    <td>{{ grupo.1 }}</td>
+                                    <td>{{ grupo.2 }}</td>
+                                    <td>{{ grupo.3 }}</td>
+                                    <td>
+                                        <a href="/registroGrup/edit/{{ grupo.0 }}/"><button class="btneditar">Editar</button></a>
+                                        <button class="btneliminar">Eliminar</button>
+                                    </td>                             
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>  
+                </div>       
+                
+                <div class="footer-tools">
+                    <div class="list-items">
+                        Mostrar
+                        <select name="n-entries" id="n-entries" class="n-entries">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                        </select> 
+                        registros 
+                    </div>
+                    <div class="pages">
+                        <ul>
+                            <li><span class="active">1</span></li>
+                            <li><button>2</button></li>
+                            <li><button>3</button></li>
+                            <li><button>4</button></li>
+                            <li><span>...</span></li>
+                            <li><button>9</button></li>
+                            <li><button>10</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>
+
+{% endblock %}

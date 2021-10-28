@@ -19,7 +19,20 @@ def inicio():
 @app.route('/registroGrup/',methods=['GET','POST'])
 def registro_grupos():
     if request.method == 'GET':
-        return render_template('FormularioGrupos.html')
+        #if "nom" in session:
+        #    perfnom = session['nom']
+        #    perfusuario = str(session['usuario'])
+                
+            sql = f'SELECT * FROM Grupos'
+            
+            resGrupo = seleccion(sql)
+            return render_template ('AdminGrupos.html', grupos=resGrupo) 
+                           
+
+        #else:
+        #    flash("Inicie sesión para utilizar plataforma")
+        #    return render_template ('index.html')
+        
     else:
             grupoid=request.form['iddegrupo']
             Nombregrup=request.form['nombre']
@@ -32,8 +45,19 @@ def registro_grupos():
             conexion.commit()
             conexion.close()
 
-            flash("Registro Exitoso")
+            flash("Grupo Almacenado")
             return redirect ('/registroGrup/')
+
+@app.route('/registroGrup/edit/<idg>/')
+def registro_grupos_edit(idg):
+    conexion=dB.base_conexion()
+    strsql = f'DELETE FROM Grupos WHERE GrupoID="{idg}"'
+    cursosObj=conexion.cursor()
+    cursosObj.execute(strsql)
+    conexion.commit()
+    conexion.close()
+    return todook
+
 
 @app.route('/registroMat/',methods=['GET','POST'])
 def registro_materias():
@@ -53,6 +77,7 @@ def registro_materias():
 
             flash("Registro Exitoso")
             return render_template ('/registroMat/')
+
 
 
 @app.route('/index/', methods=["POST"])
