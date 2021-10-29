@@ -66,7 +66,6 @@ def registro_materias():
             sql = f'SELECT * FROM Materias'
             
             resMat = seleccion(sql)
-            print(resMat)
             return render_template ('AdminMaterias.html', materias=resMat, nombres= perfnom, data=[('/registroGrup/', 'Grupos'), ('/ResumenNotas/', 'Notas')])
         else:
             flash("Inicie sesión para utilizar plataforma")
@@ -87,6 +86,37 @@ def registro_materias():
             flash("Registro Exitoso")
             return redirect ('/registroMat/')
 
+
+@app.route('/inscMat/',methods=['GET','POST'])
+def ins_materias():    
+    if request.method == 'GET':
+        if "nom" in session:
+            perfnom = session['nom']
+            usr = session['usuario']
+                              
+            sql = f'SELECT * FROM Materias'
+            resMat = seleccion(sql)
+            sql = f'SELECT InsMatEst.IDInsME, InsMatEst.CodMateI, Materias.Nombre, Materias.Semestre FROM InsMatEst INNER JOIN Materias ON InsMatEst.CodMateI = Materias.CodMateria WHERE DNIEI="{usr}"'
+            resIns = seleccion(sql)
+            return render_template ('MateriasEst.html', materias=resMat, insmat=resIns, nombres= perfnom, data=[('/registroGrup/', 'Grupos'), ('/ResumenNotas/', 'Notas')])
+        else:
+            flash("Inicie sesión para utilizar plataforma")
+            return render_template ('index.html')
+        
+    else:
+            listama = request.form.getlist('materia')
+            usr = session['usuario']
+
+            for mat in listama:                            
+                conexion=dB.base_conexion()
+                strsql="insert into InsMatEst (DNIEI, CodMateI) values('{}','{}')" .format(usr, mat)
+                cursosObj=conexion.cursor()
+                cursosObj.execute(strsql)
+                conexion.commit()
+                conexion.close()
+
+            flash("Registro Exitoso")
+            return redirect ('/inscMat/')
 
 
 @app.route('/index/', methods=["POST"])
@@ -166,7 +196,7 @@ def registro_datos():
 
 @app.route('/paginicio/')   
 def paginicio():
-    if "nom" in session and session['tipoU'] == "1":
+    if "nom" in session and session['tipoU'] == "2":
         perfnom = session['nom']
         return render_template ('paginicio.html', nombres= perfnom, data=[('/registroMat/', 'Materias'), ('/ResumenNotas/', 'Notas'), ('/registroGrup/', 'Grupos')])
     else:

@@ -1,5 +1,6 @@
 {% extends "plantilla.html" %} 
-{% block title %} Admin Estudiantes {% endblock %} 
+{% block title %} Materias {% endblock %} 
+
 
 {% block cuerpo %}
 <div class="Containermain" style="width: 100%; background-color: white;">
@@ -28,43 +29,69 @@
     </div>
     
     <div class="right">                                
-        
+        <div class="marco" style="margin-top: 10px; width: 60%;">
+            <h2>Inscribir Materias</h2> 
+            <div class="datatable-container">
+                
+                <div style="padding-left: 12px; padding-right: 12px;">
+                    <form action="/inscMat/" method="POST" name="inscMat">
+                        <table class="datatable">
+                            <thead>
+                                <tr>
+                                    <th>INSCRIBIR</th>
+                                    <th>COD. MATERIA</th>
+                                    <th>NOMBRE</th>
+                                    <th>SEMESTRE</th>                                
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for materia in materias%}
+                                    <tr>
+                                        <td><input type="checkbox" name="materia" value="{{ materia.0 }}"></td> 
+                                        <td>{{ materia.0 }}</td>  
+                                        <td>{{ materia.1 }}</td>
+                                        <td>{{ materia.2 }}</td>                                                                                                       
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table><br/>
+                        <input type="submit" value="Guardar" style="background-color: rgb(44, 84, 117); color: rgb(255, 204,0); width: 150px; height: 25px; ">
+                        <p></p>
+                    </form>
+                </div>                     
+            </div>        
+        </div>
+
         {% for msg in get_flashed_messages() %}
         <div class="fila">{{ msg }}</div>
         {% endfor %}
         
-        <div class="marco" style="margin-top: 10px; width: 100%;">
-            <h2>Lista de Estdiantes</h2> 
+        <div class="marco" style="margin-top: 10px; width: 60%;">
+            <h2>Materias Matriculadas</h2> 
             <div class="datatable-container">
                 
                 <div style="padding-left: 12px; padding-right: 12px;">
                     <table class="datatable">
                         <thead>
                             <tr>
-                                <th>DNI</th>
-                                <th>NOMBRES</th>
-                                <th>GENERO</th>
-                                <th>ESTADO</th>
-                                <th>FEC NACIMIENTO</th>
-                                <th>ACCIONES</th>
+                                <th>COD DE INS</th>
+                                <th>COD. MATERIA</th>
+                                <th>NOMBRE</th>
+                                <th>SEMESTRE</th>                                
                             </tr>
                         </thead>
                         <tbody>
-                            {%for estudiante in estudiantes%}
+                            {%for inscrip in insmat%}
                                 <tr>
-                                    <td>{{ estudiante.0 }}</td> 
-                                    <td>{{ estudiante.1 }}</td>
-                                    <td>{{ estudiante.2 }}</td>
-                                    <td>{{ estudiante.3 }}</td>
-                                    
-                                    <td>
-                                        <a href="#"><button class="btneliminar">Asig Grupo</button></a>
-                                    </td>                             
+                                    <td>{{ inscrip.0 }}</td> 
+                                    <td>{{ inscrip.1 }}</td>  
+                                    <td>{{ inscrip.2 }}</td>
+                                    <td>{{ inscrip.3 }}</td>                                                                                                       
                                 </tr>
                             {% endfor %}
                         </tbody>
                     </table>  
-                </div>       
+                </div> 
                 
                 <div class="footer-tools">
                     <div class="list-items">
@@ -84,7 +111,7 @@
                             <li><button>4</button></li>
                             <li><span>...</span></li>
                             <li><button>9</button></li>
-                            <li><button>10</button></li>
+                            
                         </ul>
                     </div>
                 </div>
