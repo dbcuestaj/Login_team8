@@ -1,5 +1,6 @@
 {% extends "plantilla.html" %} 
-{% block title %} Admin Grupos {% endblock %} 
+{% block title %} Materias {% endblock %} 
+
 
 {% block cuerpo %}
 <div class="Containermain" style="width: 100%; background-color: white;">
@@ -31,19 +32,16 @@
         <div class="marco" style="margin-top: 20px; width: 30%;">
             <h2>Crear Grupos</h2> 
             <div class=container-uploadact style="padding-right: 12px; padding-bottom: 12px; padding-left: 12px; border-top: 4px solid rgb(17, 84,139);">
-                <form action="/registroGrup/" method="POST" name="registroGrup">
+                <form action="/registroMat/" method="POST" name="registroMat">
                     
-                    <input class="controls" type="text" name="iddegrupo" required autofocus size="40" placeholder="ID del Grupo">
-                    <input class="controls" type="text" name="nombre" required size="40" placeholder="Nombre del Grupo"><br/>              
-                    <label>Jornada del grupo:</label><br/>
-                    <select name="Jornada" class="controls" style="border: 2px solid rgb(17, 84,139); border-radius: 3px;">
-                            <option value="0">Seleccione</option>
-                            <option value="D">Diurna</option>
-                            <option value="N">Nocturna</option>
-                    </select><br/>
+                    <input class="controls" type="text" name="iddemateria" required autofocus size="40" placeholder="ID de Materia">
+                    <input class="controls" type="text" name="nombremat" required size="40" placeholder="Nombre de Materia">             
+                    <input class="controls" type="text" name="semestre" required size="40" placeholder="Semestre"><br/> 
+                    
                     <input type="submit" value="Guardar" style="background-color: rgb(17, 84,139); color: rgb(255, 204,0); width: 150px; height: 25px;"><br/>
                     
                 </form>
+
             </div>    
         </div>
 

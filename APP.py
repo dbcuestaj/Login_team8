@@ -48,15 +48,16 @@ def registro_grupos():
             flash("Grupo Almacenado")
             return redirect ('/registroGrup/')
 
-@app.route('/registroGrup/edit/<idg>/')
+@app.route('/registroGrup/delete/<idg>/')
 def registro_grupos_edit(idg):
     conexion=dB.base_conexion()
-    strsql = f'DELETE FROM Grupos WHERE GrupoID="{idg}"'
+    strsql = f'UPDATE Grupos SET GEstado=? WHERE GrupoID="{idg}"'
     cursosObj=conexion.cursor()
-    cursosObj.execute(strsql)
+    cursosObj.execute(strsql,'D')
     conexion.commit()
     conexion.close()
-    return todook
+    flash("Grupo Desactivado")
+    return redirect ('/registroGrup/')
 
 
 @app.route('/registroMat/',methods=['GET','POST'])

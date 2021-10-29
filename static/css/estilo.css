@@ -50,6 +50,16 @@ body {
     padding: 15px;     
 }
 
+.fila{
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 20px;
+    color: green;
+}
+
 .prueba {
     text-align                      : center;
     border-bottom                   : 5px solid rgb(17, 84,139);
