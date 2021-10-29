@@ -19,7 +19,7 @@ def inicio():
 @app.route('/registroGrup/',methods=['GET','POST'])
 def registro_grupos():
     if request.method == 'GET':
-        if "nom" in session and session['usuario'] == '52698044':
+        if "nom" in session and session['tipoU'] == "1":
             perfnom = session['nom']
                       
             sql = f'SELECT * FROM Grupos'
@@ -58,9 +58,20 @@ def registro_grupos_edit(idg):
 
 
 @app.route('/registroMat/',methods=['GET','POST'])
-def registro_materias():
+def registro_materias():    
     if request.method == 'GET':
-        return render_template('FormularioMaterias.html')
+        if "nom" in session and session['tipoU'] == "1":
+            perfnom = session['nom']
+                      
+            sql = f'SELECT * FROM Materias'
+            
+            resMat = seleccion(sql)
+            print(resMat)
+            return render_template ('AdminMaterias.html', materias=resMat, nombres= perfnom, data=[('/registroGrup/', 'Grupos'), ('/ResumenNotas/', 'Notas')])
+        else:
+            flash("Inicie sesión para utilizar plataforma")
+            return render_template ('index.html')
+        
     else:
             materiaid=request.form['iddemateria']
             Nombremat=request.form['nombremat']
@@ -74,7 +85,7 @@ def registro_materias():
             conexion.close()
 
             flash("Registro Exitoso")
-            return render_template ('/registroMat/')
+            return redirect ('/registroMat/')
 
 
 
