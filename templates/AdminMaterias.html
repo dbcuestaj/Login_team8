@@ -54,26 +54,20 @@
             <div class="datatable-container">
                 
                 <div style="padding-left: 12px; padding-right: 12px;">
-                    <table class="datatable" style="width: 90%;">
+                    <table class="datatable" style="width: 60%;">
                         <thead>
                             <tr>
-                                <th>ID GRUPO</th>
+                                <th>COD. MATERIA</th>
                                 <th>NOMBRE</th>
-                                <th>JORNADA</th>
-                                <th>ESTADO</th>
-                                <th>ACCIONES</th>
+                                <th>SEMESTRE</th>                                
                             </tr>
                         </thead>
                         <tbody>
-                            {%for grupo in grupos%}
+                            {%for materia in materias%}
                                 <tr>
-                                    <td>{{ grupo.0 }}</td> 
-                                    <td>{{ grupo.1 }}</td>
-                                    <td>{{ grupo.2 }}</td>
-                                    <td>{{ grupo.3 }}</td>
-                                    <td>
-                                        <a href="/registroGrup/delete/{{ grupo.0 }}/"><button class="btneliminar">Eliminar</button></a>
-                                    </td>                             
+                                    <td>{{ materia.0 }}</td> 
+                                    <td>{{ materia.1 }}</td>
+                                    <td>{{ materia.2 }}</td>                                                                                              
                                 </tr>
                             {% endfor %}
                         </tbody>

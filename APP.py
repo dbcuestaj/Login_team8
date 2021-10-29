@@ -19,19 +19,16 @@ def inicio():
 @app.route('/registroGrup/',methods=['GET','POST'])
 def registro_grupos():
     if request.method == 'GET':
-        #if "nom" in session:
-        #    perfnom = session['nom']
-        #    perfusuario = str(session['usuario'])
-                
+        if "nom" in session and session['usuario'] == '52698044':
+            perfnom = session['nom']
+                      
             sql = f'SELECT * FROM Grupos'
             
             resGrupo = seleccion(sql)
-            return render_template ('AdminGrupos.html', grupos=resGrupo) 
-                           
-
-        #else:
-        #    flash("Inicie sesión para utilizar plataforma")
-        #    return render_template ('index.html')
+            return render_template ('AdminGrupos.html', grupos=resGrupo, nombres= perfnom, data=[('/registroMat/', 'Materias'), ('/ResumenNotas/', 'Notas')])
+        else:
+            flash("Inicie sesión para utilizar plataforma")
+            return render_template ('index.html')
         
     else:
             grupoid=request.form['iddegrupo']
@@ -108,9 +105,7 @@ def login():
             session.clear()
             session['nom'] = res[0][0]
             session['usuario'] = usr
-
-            print(session['usuario'])
-
+            session['tipoU'] = request.form['selectrol']
             return redirect('/paginicio/')
         else:
             flash('ERROR: Clave invalida')
@@ -160,9 +155,9 @@ def registro_datos():
 
 @app.route('/paginicio/')   
 def paginicio():
-    if "nom" in session:
+    if "nom" in session and session['tipoU'] == "1":
         perfnom = session['nom']
-        return render_template ('paginicio.html', nombres= perfnom)
+        return render_template ('paginicio.html', nombres= perfnom, data=[('/registroMat/', 'Materias'), ('/ResumenNotas/', 'Notas'), ('/registroGrup/', 'Grupos')])
     else:
         flash("Inicie sesión para utilizar plataforma")
         return render_template ('index.html')
@@ -176,7 +171,7 @@ def logout():
 def recuperar_contrasena():
     return render_template ('Olvido su contraseña.html')
 
-@app.route('/ResumenNotas')
+@app.route('/ResumenNotas/')
 def ResumenNotas():
     return render_template ('redumenNotas.html')
 
@@ -193,9 +188,8 @@ def actividades():
             perfusuario = str(session['usuario'])
                 
             sql = f'SELECT Materias.GrupoId, Grupos.Nombre FROM Materias INNER JOIN Grupos ON Materias.GrupoId = Grupos.GrupoID WHERE Profesorid="{perfusuario}"'
-            
             resMaterias = seleccion(sql)
-            
+                        
             # Proceso la respuesta
             if len(resMaterias)==0:
                 flash('No tiene grupos asignados')

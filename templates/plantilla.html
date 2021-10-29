@@ -40,9 +40,10 @@
 
     <!-- Navigation Bar -->
     <div class="navbar">
-        <a href="/registroMat/"><b>Materias</b></a>
-        <a href="/ResumenNotas"><b>Notas</b></a>
-        <a href="/actividades/"><b>Actividades</b></a>
+        {%for opc in data%}
+	    <a href="{{ opc.0 }}"><b>{{ opc.1 }}</b></a>                              
+        {% endfor %}
+        
     </div>
 
     <!-- The flexible grid -->
