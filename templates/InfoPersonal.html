@@ -1,94 +1,78 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends "plantilla.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informacion personal</title>
-    <link rel='stylesheet' type='text/css' href="{{url_for('static', filename='css/estilo3.css')}}" />
+{% block title %}
 
-</head>
+Perfil
 
-<body>
-    <!-- Header -->
-    <div class="containerheader">
-        <div class="boxheader">
-            <a href="/paginicio/"><img src="{{url_for('static', filename='img/LA_SALLE_AN.gif')}}" alt="ULogo" style="width:90%; height:auto;" />
-            </a>
+{% endblock %}
+
+{% block cuerpo %}
+<div class="Containermain" style="width: 100%;">
+    <div class="aside">
+                        
+        <div class="event-container">
+            <h4 class="mes">Octubre</h4>
+            <div class="event">
+                <div class="event-left"><p>Dia</p></div>
+                <div class="event-right">
+                    <h5 style="text-transform: uppercase;">Evento</h5>
+                    <div>Descripción</div>
+                </div>
+            </div>
         </div>
-        <div class="boxheader"></div>
-        <div class="boxheader"></div>
-        <div class="boxheader"></div>
-        <div class="boxheader">
-            <div style="width: auto;">
-                <img src="{{url_for('static', filename='img/user2.ico')}}" alt="User" style="width:25%;height:auto; float: right;" />
-            </div>
-            <div style="width: auto; text-align: center; padding-left: 80px;">
-                <a href="/perfil">
-                    <h4><b>{{nombres}}</b></h4>
-                </a>
-            </div>
+        
+        <a href="https://www.mooc.org/es/" target="_blank"><button><b>Massive Open Online Courses</b></button></a>
+        <a href="https://www.wdl.org/es/" target="_blank"><button><b>Biblioteca Digital</b></button></a>
+        <a href="/logout/"><button><b>Cerrar sesión</b></button></a>
+                                    
+        <div class="social-container">
+            <a href="https://co.linkedin.com/school/universidad-de-la-salle/" target="_blank" style="margin-right: 5px;"> <i class="fa fa-linkedin-square fa-2x"></i></a>
+            <a href="https://twitter.com/unisalle?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" style="margin-right: 5px;"> <i class="fa fa-twitter-square fa-2x"></i></a>
+            <a href="https://www.facebook.com/U.deLaSalle/" target="_blank" style="margin-right: 5px;"> <i class="fa fa-facebook-square fa-2x"></i></a>
         </div>
     </div>
 
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <h1>Informacion personal</h1>
-    </div>
+    <div class="right" style="background-color: rgb(17, 84,139)">
+        <fieldset style="padding-top: 8%; padding-bottom: 8%; display: flex; align-items: center; justify-content: center;">
+            <legend style="font-weight:bold; color:#d4d4d4;">Informacion Personal</legend>
+            <form style="width: 50%;" action="/perfil/" method="POST" name="perfil">
 
-    <!-- The flexible grid -->
-    <div class="Containermain">
-        <div class="divisiones"></div>
-        <div class="divisiones">
-
-
-
-            <fieldset>
-                <legend style="font-weight:bold; color:#d4d4d4;">Datos personales</legend>
-                <form action="ejemplo.php" method="get">
-                    <p>Nombres: </p>
-                    <p> <input type="text" name="nombre" required readonly size="40" value="Juan Luis"></p>
-                    <p>Apellidos: </p>
-                    <p> <input type="text" name="nombre" required readonly size="40" value="Duarte Alcantara"></p>
-                    <p>Documento de identidad:</p>
-                    <p><input type="number" name="Documento" required size="40" readonly value="1013100890">
-                        <input type="text" name="tipoDeTarjeta" required readonly size="40" value="Tarjeta de identidad">
-                    </p>
-
-                    <p>Fecha de nacimiento: </p>
-                    <p><input type="date" name="fecha de nacimiento" readonly value="2004-07-27"></p>
-
-                    <p>Telefono:</p>
-                    <p><input type="number" name="telefono" required size="40" readonly value="3209793039"></p>
-
-                    <p>
-                        <a href="/formularioCambio"><input type="button" value="Editar Datos"></a>
-
-                        <script>
-                            function mensaje(texto) {
-                                alert(texto);
-                            }
-                        </script>
-                    </p>
-
-            </fieldset>
-
+                <label class="LIPer">Nombre: </label><br/>
+                <input class="controls" type="text" name="nombre" required size="40" value="{{nombre}}"><br/>
+                <label class="LIPer">Documento de identidad:</label><br/>                
+                    <select name="menu" style="height: 29px;">
+                        <option value="0">Seleccione</option>
+                        <option value="1">Tarjeta de identidad</option>
+                        <option value="2">Cedula</option>
+                        <option value="3">Cedula Extranjera</option>
+                    </select>
+                    <input class="controls" type="text" name="Documento" required size="40" value="{{dni}}"><br/>
+                <label class="LIPer">Fecha de Nacimiento:</label><br/>
+                <input class="controls" type="date" name="fechadenacimiento" value="{{nacido}}"><br/>
+                <label class="LIPer">Contraseña</label><br/>
+                <input class="controls" type="password" name="contrasena" required size="40" value="{{contraseña}}" minlength="8">
+                <p>
+                    <input style="background-color: rgb(255, 204,0);" type="submit" value="Editar Datos">                   
+                </p>
             </form>
-
             <div class="imagenUsuario"><img src="{{url_for('static', filename='img/logouser.png')}}" alt="imagenUsuario"></div>
-
-
-
-
-        </div>
-        <div class="divisiones"></div>
+        </fieldset>
+        
     </div>
+</div>
 
-    <!-- Footer -->
-    <div class="footer">
-        <a href="#">© copyright Team8</a>
-    </div>
-</body>
+{% endblock %}
 
-</html>
+
+
+
+   
+
+            
+
+            
+
+            
+
+
+

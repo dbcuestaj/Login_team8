@@ -60,6 +60,10 @@ body {
     color: green;
 }
 
+.LIPer {
+    color: rgb(255, 204,0);
+}
+
 .prueba {
     text-align                      : center;
     border-bottom                   : 5px solid rgb(17, 84,139);

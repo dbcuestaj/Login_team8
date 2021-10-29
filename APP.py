@@ -25,7 +25,7 @@ def registro_grupos():
             sql = f'SELECT * FROM Grupos'
             
             resGrupo = seleccion(sql)
-            return render_template ('AdminGrupos.html', grupos=resGrupo, nombres= perfnom, data=[('/registroMat/', 'Materias'), ('/ResumenNotas/', 'Notas')])
+            return render_template ('AdminGrupos.html', grupos=resGrupo, nombres= perfnom, data=[('/registroMat/', 'Materias')])
         else:
             flash("Inicie sesión para utilizar plataforma")
             return render_template ('index.html')
@@ -66,7 +66,7 @@ def registro_materias():
             sql = f'SELECT * FROM Materias'
             
             resMat = seleccion(sql)
-            return render_template ('AdminMaterias.html', materias=resMat, nombres= perfnom, data=[('/registroGrup/', 'Grupos'), ('/ResumenNotas/', 'Notas')])
+            return render_template ('AdminMaterias.html', materias=resMat, nombres= perfnom, data=[('/registroGrup/', 'Grupos')])
         else:
             flash("Inicie sesión para utilizar plataforma")
             return render_template ('index.html')
@@ -98,7 +98,7 @@ def ins_materias():
             resMat = seleccion(sql)
             sql = f'SELECT InsMatEst.IDInsME, InsMatEst.CodMateI, Materias.Nombre, Materias.Semestre FROM InsMatEst INNER JOIN Materias ON InsMatEst.CodMateI = Materias.CodMateria WHERE DNIEI="{usr}"'
             resIns = seleccion(sql)
-            return render_template ('MateriasEst.html', materias=resMat, insmat=resIns, nombres= perfnom, data=[('/registroGrup/', 'Grupos'), ('/ResumenNotas/', 'Notas')])
+            return render_template ('MateriasEst.html', materias=resMat, insmat=resIns, nombres= perfnom, data=[('/ResumenNotas/', 'Notas')])
         else:
             flash("Inicie sesión para utilizar plataforma")
             return render_template ('index.html')
@@ -147,6 +147,9 @@ def login():
             session['nom'] = res[0][0]
             session['usuario'] = usr
             session['tipoU'] = request.form['selectrol']
+            session['clave'] = cla
+            print(session['clave'])
+
             return redirect('/paginicio/')
         else:
             flash('ERROR: Clave invalida')
@@ -198,7 +201,14 @@ def registro_datos():
 def paginicio():
     if "nom" in session and session['tipoU'] == "2":
         perfnom = session['nom']
-        return render_template ('paginicio.html', nombres= perfnom, data=[('/registroMat/', 'Materias'), ('/ResumenNotas/', 'Notas'), ('/registroGrup/', 'Grupos')])
+        return render_template ('paginicio.html', nombres= perfnom, data=[('/inscMat/', 'Materias')])
+    if "nom" in session and session['tipoU'] == "1":
+        perfnom = session['nom']
+        return render_template ('paginicio.html', nombres= perfnom, data=[('/ResumenNotas/', 'Notas')])
+    if "nom" in session and session['tipoU'] == "3":
+        perfnom = session['nom']
+        return render_template ('paginicio.html', nombres= perfnom, data=[('/registroGrup/', 'Grupos'), ('/registroMat/', 'Materias')])
+    
     else:
         flash("Inicie sesión para utilizar plataforma")
         return render_template ('index.html')
@@ -208,6 +218,62 @@ def logout():
     session.clear()
     return redirect('/')
 
+@app.route('/perfil/',methods=['GET','POST'])
+def perfil():
+
+    if request.method == 'GET':
+        if "nom" in session:
+            perfnom = session['nom']
+            usr = session['usuario']
+            pw = session['clave'] 
+            
+            if session['tipoU'] == "2":                              
+                sql = f'SELECT Nacido FROM Estudiantes WHERE DNI="{usr}"'
+                resIP = seleccion(sql)
+                return render_template ('infoPersonal.html', contraseña=pw, nacido=resIP[0][0], nombre=perfnom, dni=usr, data=[('/inscMat/', 'Materias')])
+            if session['tipoU'] == "3":
+                return render_template ('infoPersonal.html', contraseña=pw, nombre=perfnom, dni=usr, data=[('/registroGrup/', 'Grupos'), ('/registroMat/', 'Materias')])    
+            if session['tipoU'] == "1":
+                return render_template ('infoPersonal.html', contraseña=pw, nombre=perfnom, dni=usr, data=[('/ResumenNotas/', 'Notas')])     
+        else:
+            flash("Inicie sesión para utilizar plataforma")
+            return render_template ('index.html')
+        
+    else:
+            usr = session['usuario']
+            nom=request.form['nombre']
+            doc=request.form['Documento']
+            nacido=request.form['fechadenacimiento']
+            contraseña=generate_password_hash(request.form['contrasena'])            
+
+            if session['tipoU'] == "2":     
+                conexion=dB.base_conexion()
+                strsql = f'UPDATE Estudiantes SET DNI=?, Nombres=?, Contraseña=?, Nacido=? WHERE DNI="{usr}"'
+                cursosObj=conexion.cursor()
+                cursosObj.execute(strsql,(doc, nom, contraseña, nacido))
+                conexion.commit()
+                conexion.close()
+
+            if session['tipoU'] == "1":     
+                conexion=dB.base_conexion()
+                strsql = f'UPDATE Profesores SET ID=?, Nombres=?, Contraseña=? WHERE ID="{usr}"'
+                cursosObj=conexion.cursor()
+                cursosObj.execute(strsql,(doc, nom, contraseña))
+                conexion.commit()
+                conexion.close()
+
+            if session['tipoU'] == "3":     
+                conexion=dB.base_conexion()
+                strsql = f'UPDATE SuperAdmin SET ID=?, Nombres=?, Contraseña=? WHERE ID="{usr}"'
+                cursosObj=conexion.cursor()
+                cursosObj.execute(strsql,(doc, nom, contraseña))
+                conexion.commit()
+                conexion.close()
+            
+            session.clear()
+            flash("Actualización Exitosa")
+            return redirect('/')
+
 @app.route('/recuperar contrasena')
 def recuperar_contrasena():
     return render_template ('Olvido su contraseña.html')
@@ -216,9 +282,21 @@ def recuperar_contrasena():
 def ResumenNotas():
     return render_template ('redumenNotas.html')
 
-@app.route('/perfil')
-def perfil():
-    return render_template ('infoPersonal.html')
+@app.route('/notasprof/')
+def notasprof():
+    return render_template ('notasprofe.html')    
+
+@app.route('/adminestu/')
+def adminestu():
+    return render_template ('adminestu.html')    
+
+@app.route('/formularioCambio/')
+def formularioCambio():
+    return render_template ('formularioCambio.html')
+    
+@app.route('/infdeestudi/')
+def infdeestudi():
+    return render_template ('infdeestudi.html')
 
 @app.route('/actividades/', methods=['GET','POST'])
 def actividades():
@@ -259,24 +337,8 @@ def actividades():
         conexion.close()
 
         flash("Registro Exitoso")
-        return redirect('/actividades/')
+        return redirect('/actividades/')    
 
-    
-@app.route('/notasprof')
-def notasprof():
-    return render_template ('notasprofe.html')    
-
-@app.route('/adminestu')
-def adminestu():
-    return render_template ('adminestu.html')    
-
-@app.route('/formularioCambio')
-def formularioCambio():
-    return render_template ('formularioCambio.html')
-    
-@app.route('/infdeestudi')
-def infdeestudi():
-    return render_template ('infdeestudi.html')
 
 if __name__ == '__main__':
     app.run(port=8080,debug=True)
