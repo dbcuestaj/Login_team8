@@ -274,9 +274,20 @@ def perfil():
             flash("Actualización Exitosa")
             return redirect('/')
 
-@app.route('/recuperar contrasena/')
+@app.route('/recuperar contrasena',methods=['GET','POST'])
 def recuperar_contrasena():
-    return render_template ('Olvido su contraseña.html')
+    if request.method == 'GET':
+        return render_template ('Olvido su contraseña.html')
+    else:
+        Correo=request.form['correo']
+        
+        conexion=dB.base_conexion()
+        strsql="insert into OlvidoContraseña (Correo) values('{}')" .format(Correo)
+        cursosObj=conexion.cursor()
+        cursosObj.execute(strsql)
+        conexion.commit()
+        conexion.close()        
+        return render_template ('Olvido su contraseña.html')
 
 @app.route('/ResumenNotas/')
 def ResumenNotas():
