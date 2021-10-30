@@ -287,7 +287,9 @@ def recuperar_contrasena():
         cursosObj.execute(strsql)
         conexion.commit()
         conexion.close()        
+        flash("Se le enviara un correo pronto")
         return render_template ('Olvido su contraseña.html')
+    
 
 @app.route('/ResumenNotas/')
 def ResumenNotas():
