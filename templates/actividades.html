@@ -39,7 +39,7 @@ Actividades
         <div class="marco" style="margin-top: 20px; width: 40%;">
             <h2>Crear Actividad</h2> 
             <div class=container-uploadact style="padding-right: 12px; padding-bottom: 12px; padding-left: 12px; border-top: 4px solid rgb(17, 84,139);">
-                <form action="/actividades/" method="Post" name="Actividades">                        
+                <form action="/actividadesP/" method="Post" name="Actividades">                        
                     <br/>
                     {% for msg in get_flashed_messages() %}
                     <div class="fila">{{ msg }}</div>
@@ -47,7 +47,7 @@ Actividades
                     <label>Grupo</label><br/>
                     <select name="grupoactvidades" class="controls" style="border: 2px solid rgb(17, 84,139); border-radius: 3px;">
                         <option value="">Selecciona</option>
-                        {%for grupo in materias%}
+                        {%for grupo in grupos%}
                             <option value="{{grupo.0}}">{{ grupo.1 }}</option>
                         {% endfor %}
                     </select><br/>
@@ -66,8 +66,8 @@ Actividades
                     <input type="submit" class="submit" style="background-color: rgb(17, 84,139); color: rgb(255, 204,0); width: 150px; height: 25px;"><br/>
                 </form>
             </div>
-        </div> 
-        
+        </div>
+
         <div class="marco" style="margin-top: 10px;">
             <h2>Actividades</h2> 
             <div class="datatable-container">
@@ -155,7 +155,7 @@ Actividades
                         </tbody>
                     </table>
                 </div>
-
+        
                 <div class="footer-tools">
                     <div class="list-items">
                         Mostrar
@@ -177,11 +177,13 @@ Actividades
                             <li><button>10</button></li>
                         </ul>
                     </div>
-
+        
                 </div>
             </div>
         
         </div>
+        
+
             
     </div>                
 </div>
